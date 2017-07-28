@@ -38,6 +38,7 @@
     <div id="about" class="text-center">
         <h3>About RMIT ITS Team</h3>
         <p>We are awesome</p>
+            <img src="{{ URL::to('images/RMITAcademic.jpg') }}" class="img-responsive"/>
     </div>
 
     <div id="howto" class="text-center">
