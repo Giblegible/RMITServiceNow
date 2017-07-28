@@ -1,4 +1,3 @@
-<!doctype html>
     <div class="links">
         <a href="{{ URL::to('home') }}">Home</a>
         <a href="{{ URL::to('requestservice') }}">Request Service</a>

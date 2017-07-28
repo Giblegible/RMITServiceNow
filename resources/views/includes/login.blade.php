@@ -1,4 +1,3 @@
-<!doctype html>
 @if (Route::has('login'))
     <div class="top-right links">
         @if (Auth::check())
