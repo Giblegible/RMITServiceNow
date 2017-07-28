@@ -1,2 +1,2 @@
 <!doctype html>
-//Currently not in use
+@include('includes/nav')
