@@ -6,11 +6,7 @@
 <div class="">
     @include('includes/login')
     <div class="">
-        <div class="">
-            Service Now
-        </div>
-        @include('includes/nav')
-
+        <h2>Service Now</h2>
     </div>
 </div>
 </body>
