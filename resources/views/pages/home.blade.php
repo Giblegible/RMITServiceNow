@@ -2,9 +2,9 @@
 <html lang="{{ app()->getLocale() }}">
 @include('includes.head')
 <body>
-<div class="flex-center position-ref full-height">
+<div class="">
     @if (Route::has('login'))
-        <div class="top-right links">
+        <div class="">
             @if (Auth::check())
                 <a href="{{ url('/home') }}">Home</a>
             @else
@@ -14,8 +14,8 @@
         </div>
     @endif
 
-    <div class="content">
-        <div class="title m-b-md">
+    <div class="">
+        <div class="">
             Service Now
         </div>
         @include('includes/nav')
