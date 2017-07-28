@@ -2,11 +2,11 @@
 
 //Home page View Route
 Route::get('/', function () {
-    return View::make('pages.welcome');
+    return View::make('pages.home');
 });
 
-Route::get('welcome', function () {
-    return View::make('pages.welcome');
+Route::get('home', function () {
+    return View::make('pages.home');
 });
 
 //Request Service View Route
