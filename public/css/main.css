@@ -21,8 +21,9 @@ html, body {
     /***
         HOME PAGE
      ***/
-#filter {
-    padding:20px;
+#critical, #non-critical, #general-advise {
+    margin-top:20px;
+    margin-bottom:20px;
 }
 
 #about {
