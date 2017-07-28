@@ -18,8 +18,8 @@
         <div class="title m-b-md">
             Service Now
         </div>
-
         @include('includes/nav')
+
     </div>
 </div>
 </body>
