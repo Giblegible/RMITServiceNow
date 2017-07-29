@@ -35,10 +35,13 @@
         </div>
 
     </div>
-    <div id="about" class="text-center">
+    <div id="about" class="text-center col-md-12">
         <h3>About RMIT ITS Team</h3>
-        <p>We are awesome</p>
+        <div class="col-md-8 col-md-offset-2">
             <img src="{{ URL::to('images/RMITAcademic.jpg') }}" class="img-responsive"/>
+            <p>The RMIT IT Support team is a group of skilled individuals who's primary role is to assist and educate customers as the first point
+            of contact. We aim to solve a wide range of issues and problems that our staff or students cannot solve.</p>
+        </div>
     </div>
 
     <div id="howto" class="text-center">
