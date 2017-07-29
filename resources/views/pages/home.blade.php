@@ -6,7 +6,7 @@
 <div class="">
     @include('includes/login')
     <div id="welcomeMessage">
-        <h2>Welcome to the RMIT Service Now Portal</h2>
+        
     </div>
 
     <div id="filter" class="col-md-12 text-center">
