@@ -12,5 +12,9 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{URL::asset('css/main.css')}}" type="text/css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css">
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ URL::asset('css/bootstrap.min.css')}}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{{ URL::asset('css/business-frontpage.css')}}" rel="stylesheet">
 </head>
