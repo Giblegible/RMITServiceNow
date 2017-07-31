@@ -10,11 +10,13 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="{{URL::asset('css/main.css')}}" type="text/css">
+    <!-- Icons -->
+    <script src="https://use.fontawesome.com/1d28165f6e.js"></script>
+
     <!-- Bootstrap Core CSS -->
     <link href="{{ URL::asset('css/bootstrap.min.css')}}" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="{{ URL::asset('css/business-frontpage.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{URL::asset('css/main.css')}}" type="text/css">
 </head>
