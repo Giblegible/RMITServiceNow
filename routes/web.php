@@ -1,13 +1,9 @@
 <?php
 
-//Home page View Route
-Route::get('/', function () {
-    return View::make('pages.home');
-});
 
-Route::get('home', function () {
-    return View::make('pages.home');
-});
+Route::get('/', 'PageController@home');
+
+Route::get('home', 'PageController@home');
 
 //Request Service View Route
 Route::get('requestservice', function() {
