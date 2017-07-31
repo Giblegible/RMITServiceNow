@@ -55,22 +55,18 @@
                 <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
             </div>
         </div>
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                FAQ's
-            </div>
-            <div class="panel-body">
-                <ul>
-                    <li>
-                        Blah
-                        <ul>
-                            <li>
-                                Bluh
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+        <div class="row">
+            <h2>FAQs</h2>
+            <ul>
+                <li>
+                    I have lost connection with the network, how can I fix this?
+                    <ul>
+                        <li>
+                            First, make sure that you are using the correct student/staff credentials
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </div>
         <!-- /.row -->
     </div>
