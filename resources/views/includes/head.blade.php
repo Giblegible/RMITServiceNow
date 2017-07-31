@@ -1,65 +1,22 @@
-<!doctype html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>RMIT Service Now</title>
+    <!-- Page Title & Icon -->
+    <title>RMIT Service Now</title>
+    <link rel="icon" href="{{URL::asset('images/rmitlogo.jpg')}}">
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+    <!-- Icons -->
+    <script src="https://use.fontawesome.com/1d28165f6e.js"></script>
 
-            .full-height {
-                height: 100vh;
-            }
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ URL::asset('css/bootstrap.min.css')}}" rel="stylesheet">
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
+    <!-- Custom CSS -->
+    <link href="{{ URL::asset('css/business-frontpage.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{URL::asset('css/main.css')}}" type="text/css">
+</head>

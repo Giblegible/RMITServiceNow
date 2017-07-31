@@ -1,4 +1,10 @@
-<!doctype html>
-<div>
-    <p>James McLennan, s3543182 - WDA Assigment 1</p>
-</div>
+<!-- Footer -->
+<footer>
+    <div class="row">
+        <div class="col-lg-12">
+            <hr>
+            <p>James McLennan, s3543182 &copy; WDA Assignment 1, 2017</p>
+        </div>
+    </div>
+    <!-- /.row -->
+</footer>
