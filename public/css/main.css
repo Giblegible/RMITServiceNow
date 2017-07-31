@@ -21,13 +21,29 @@ html, body {
     /***
         HOME PAGE
      ***/
-#critical, #non-critical, #general-advise {
-    margin-top:20px;
-    margin-bottom:20px;
-}
 
 #about img {
     margin: 0 auto;
+}
+
+.icon {
+    font-size: 10em !important;
+}
+
+#critical {
+    color: red;
+}
+
+#non-critical {
+    color: orange;
+}
+
+#general {
+    color: deepskyblue;
+}
+
+.filter {
+    text-align: center;
 }
 
 /******
