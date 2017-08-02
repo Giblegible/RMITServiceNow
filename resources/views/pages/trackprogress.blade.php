@@ -1,4 +1,4 @@
-@extends('master')
+@extends('layout.master')
 @section('title', 'Track Progress')
 @section('content')
     <div class="flex-center position-ref full-height">
