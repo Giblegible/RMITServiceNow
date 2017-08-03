@@ -18,7 +18,7 @@
                         <a href="{{ URL::to('home') }}">Home</a>
                     </li>
                     <li>
-                        <a href="{{ URL::to('requestservice') }}">Request Service</a>
+                        <a href="{{ URL::to('requestserviceinfo') }}">Request Service</a>
                     </li>
                     <li>
                         <a href="{{ URL::to('trackprogress') }}">Track Progress</a>

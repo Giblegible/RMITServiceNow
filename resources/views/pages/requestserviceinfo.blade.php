@@ -7,6 +7,7 @@
             <div class="title m-b-md">
                 Request Service
             </div>
+            <a href="{{URL::to('requestService/create')}}">Request a service!</a>
         </div>
     </div>
 @endsection
