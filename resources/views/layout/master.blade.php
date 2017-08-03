@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
     <!-- Icons -->
-    <script src="https://use.fontawesome.com/1d28165f6e.js"></script>
+    <link rel="stylesheet" href="{{ URL::asset('css/FontAwesome/css/font-awesome.min.css') }}">
 
     <!-- Bootstrap Core CSS -->
     <link href="{{ URL::asset('css/bootstrap.min.css')}}" rel="stylesheet">
@@ -21,10 +21,13 @@
     <!-- Custom CSS -->
     <link href="{{ URL::asset('css/business-frontpage.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{URL::asset('css/main.css')}}" type="text/css">
+
+    <!-- jQuery -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </head>
 <body>
 @include('includes.nav')
 @yield('content')
 </body>
-@include('includes.footer');
+@include('includes.footer')
 </html>
