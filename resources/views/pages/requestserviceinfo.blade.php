@@ -1,4 +1,4 @@
-@extends('master')
+@extends('layout.master')
 @section('title', 'Request Service')
 @section('content')
     <div class="flex-center position-ref full-height">
@@ -7,6 +7,7 @@
             <div class="title m-b-md">
                 Request Service
             </div>
+            <a href="{{URL::to('requestService/create')}}">Request a service!</a>
         </div>
     </div>
 @endsection
