@@ -28,7 +28,7 @@
         @foreach($tickets as $ticket)
             <div class="row">
                 <div class="col-md-2">
-                    <a href="{{ URL::to('requestService', $ticket->id) }}">{{ $ticket->id}}</a>
+                    <a href="{{ URL::to('pages/requestService', $ticket->id) }}">{{ $ticket->id}}</a>
                 </div>
                 <div class="col-md-2">
                     <p>{{ $ticket->serviceArea}}</p>

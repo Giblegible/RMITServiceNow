@@ -5,8 +5,6 @@ Route::get('/', 'PageController@home');
 
 Route::get('home', 'PageController@home');
 
-Route::get('requestserviceinfo', 'PageController@requestserviceinfo');
-
 //Track Progress View Route
 Route::get('trackprogress', 'PageController@trackprogress');
 
@@ -14,4 +12,4 @@ Route::get('trackprogress', 'PageController@trackprogress');
 Route::get('reportissue', 'PageController@reportissue');
 
 //Request Service View Route
-Route::resource('requestService', 'CustomerQueryController');
+Route::resource('pages/requestService', 'CustomerQueryController');

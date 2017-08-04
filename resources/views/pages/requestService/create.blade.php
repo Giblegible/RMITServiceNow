@@ -26,7 +26,7 @@
         @endif
 
         <hr>
-        {!! Form::model($query, ['action' => 'CustomerQueryController@store']) !!}
+        {!! Form::model($query, ['action' => 'CustomerQueryController@store', 'id' => 'submitQuery']) !!}
         <div class="form-group row">
             {!! Form::label('serviceArea', 'Service Type', array('class' => 'col-md-2 col-form-label')) !!}
             <div class="col-md-10">

@@ -9,13 +9,13 @@ class CustomerQueryController extends Controller
     public function index()
     {
         $tickets = CustomerQuery::all();
-        return view('requestService.index', compact('tickets'));
+        return view('pages.requestService.index', compact('tickets'));
     }
 
     public function create()
     {
         $query = new CustomerQuery;
-        return view('requestService.create', ['query' => $query ]);
+        return view('pages.requestService.create', ['query' => $query ]);
     }
 
     public function store(Request $request)
@@ -27,13 +27,13 @@ class CustomerQueryController extends Controller
         ]);
 
         CustomerQuery::create($request->all());
-        return redirect()->route('requestService.create') ->with('success','Service requested
+        return redirect()->route('pages.requestService.create') ->with('success','Service requested
             successfully. Our team will be in touch within 72 hours.');
     }
 
     public function show($id) {
         $ticket = CustomerQuery::find($id);
-        return view('requestService.show', compact('ticket'));
+        return view('pages.requestService.show', compact('ticket'));
     }
 
     /**
