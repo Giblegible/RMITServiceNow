@@ -8,6 +8,6 @@ class CustomerQuery extends Model
 {
     protected $fillable = [
         'serviceArea', 'workArea', 'problemDescription', 'problemStatus',
-        'problemSeverity', 'comments',
+        'problemSeverity', 'comments', 'hardwareType', 'softwareType',
     ];
 }
