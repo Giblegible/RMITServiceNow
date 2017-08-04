@@ -14,6 +14,4 @@ Route::get('trackprogress', 'PageController@trackprogress');
 Route::get('reportissue', 'PageController@reportissue');
 
 //Request Service View Route
-Route::get('show', 'CustomerQueryController@show');
-
 Route::resource('requestService', 'CustomerQueryController');
