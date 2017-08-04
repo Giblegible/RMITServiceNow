@@ -54,6 +54,22 @@
             </div>
         </div>
 
+        <div class="form-group row" id="computerSoftware">
+            {!! Form::label('softwareType', 'Software Type', array('class' => 'col-md-2 col-form-label')) !!}
+            <div class="col-md-10">
+                {!! Form::select('softwareType', ['OSX' => 'OSX', 'Windows' => 'Windows',
+                    'Microsoft Office' => 'Microsoft Office', 'Lectopia' => 'Lectopia',
+                    'Other' => 'Other'], ['class' => 'form-control']) !!}
+            </div>
+        </div>
+
+        <div class="form-group row" id="computerSoftwareOther">
+            {!! Form::label('softwareTypeOther', 'Other - Please specific (Software Type):', array('class' => 'col-md-2 col-form-label')) !!}
+            <div class="col-md-10">
+                {!! Form::text('softwareType', '', ['class' => 'form-control']) !!}
+            </div>
+        </div>
+
         <div class="form-group row">
             {!! Form::label('problemDescription', 'Request Description', array('class' => 'col-md-2 col-form-label')) !!}
             <div class="col-md-10">
