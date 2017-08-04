@@ -4,9 +4,49 @@
     <div class="container">
         <h2>Tickets</h2>
         <hr>
-        <p><b>Service Area</b></p>
+        <div class="row">
+            <div class="col-md-2">
+                <h3>Service Area</h3>
+            </div>
+            <div class="col-md-2">
+                <h3>Work Area</h3>
+            </div>
+            <div class="col-md-2">
+                <h3>Description</h3>
+            </div>
+            <div class="col-md-2">
+                <h3>Hardware Type</h3>
+            </div>
+            <div class="col-md-2">
+                <h3>Software Type</h3>
+            </div>
+            <div class="col-md-2">
+                <h3>Comments</h3>
+            </div>
+        </div>
+        <hr>
         @foreach($tickets as $ticket)
-            <p>{{ $ticket->serviceArea}}, {{ $ticket->workArea }}, {{ $ticket->problemDescription }}</p>
+            <div class="row">
+                <div class="col-md-2">
+                    <p>{{ $ticket->serviceArea}}</p>
+                </div>
+                <div class="col-md-2">
+                    <p>{{ $ticket->workArea}}</p>
+                </div>
+                <div class="col-md-2">
+                    <p>{{ $ticket->problemDescription}}</p>
+                </div>
+                <div class="col-md-2">
+                    <p>{{ $ticket->hardwareType}}</p>
+                </div>
+                <div class="col-md-2">
+                    <p>{{ $ticket->softwareType}}</p>
+                </div>
+                <div class="col-md-2">
+                    <p>{{ $ticket->comments}}</p>
+                </div>
+            </div>
+            <hr>
         @endforeach
     </div>
 
