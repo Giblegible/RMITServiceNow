@@ -12,6 +12,12 @@ class CustomerQueryController extends Controller
         return view('requestService.create', ['query' => $query ]);
     }
 
+    public function show()
+    {
+        $tickets = CustomerQuery::all();
+        return view('requestService.show')->with('tickets', $tickets);
+    }
+
     public function store(Request $request)
     {
         $this->validate($request, [
