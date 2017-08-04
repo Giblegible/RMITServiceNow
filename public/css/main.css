@@ -75,3 +75,13 @@ footer hr:after {
 footer p {
     padding: 10px;
 }
+
+/******
+    REQUEST SERVICE
+ ******/
+    /******
+    CREATE
+    ******/
+#computerHardware, #computerSoftware, #computerSoftwareOther {
+    display: none;
+}
