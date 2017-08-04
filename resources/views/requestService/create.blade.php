@@ -63,13 +63,6 @@
             </div>
         </div>
 
-        <div class="form-group row" id="computerSoftwareOther">
-            {!! Form::label('softwareTypeOther', 'Other - Please specific (Software Type):', array('class' => 'col-md-2 col-form-label')) !!}
-            <div class="col-md-10">
-                {!! Form::text('softwareType', '', ['class' => 'form-control']) !!}
-            </div>
-        </div>
-
         <div class="form-group row">
             {!! Form::label('problemDescription', 'Request Description', array('class' => 'col-md-2 col-form-label')) !!}
             <div class="col-md-10">
