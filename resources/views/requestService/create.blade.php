@@ -30,7 +30,8 @@
         <div class="form-group row">
             {!! Form::label('serviceArea', 'Service Type', array('class' => 'col-md-2 col-form-label')) !!}
             <div class="col-md-10">
-                {!! Form::select('serviceArea', ['Gmail' => 'Gmail', 'Computer' => 'Computer (Hardware)',
+                {!! Form::select('serviceArea', ['Gmail' => 'Gmail', 'Computer (Hardware)' => 'Computer (Hardware)',
+                    'Computer (Software)' => 'Computer (Software)',
                     'Network' => 'Network'], ['class' => 'form-control']) !!}
             </div>
         </div>
@@ -42,6 +43,14 @@
                     'Economics, Finance and Marketing', 'Engineering' => 'Engineering',
                     'Science' => 'Science', 'Business IT and Logistics' => 'Business IT and Logistics'],
                     ['class' => 'form-control']) !!}
+            </div>
+        </div>
+
+        <div class="form-group row" id="computerHardware">
+            {!! Form::label('hardwareType', 'Hardware Type', array('class' => 'col-md-2 col-form-label')) !!}
+            <div class="col-md-10">
+                {!! Form::select('hardwareType', ['Mac' => 'Mac', 'Windows PC' => 'Windows PC',
+                    'Linux' => 'Linux'], ['class' => 'form-control']) !!}
             </div>
         </div>
 
