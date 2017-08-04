@@ -22,6 +22,6 @@ class CustomerQueryController extends Controller
 
         CustomerQuery::create($request->all());
         return redirect()->route('requestService.create') ->with('success','Service requested
-            successfully');
+            successfully. Our team will be in touch within 72 hours.');
     }
 }
