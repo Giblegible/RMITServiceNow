@@ -10,7 +10,7 @@
     <link rel="icon" href="{{URL::asset('images/rmitlogo.jpg')}}">
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
 
     <!-- Icons -->
     <link rel="stylesheet" href="{{ URL::asset('css/FontAwesome/css/font-awesome.min.css') }}">
