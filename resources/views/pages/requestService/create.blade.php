@@ -49,7 +49,7 @@
         <div class="form-group row" id="computerHardware">
             {!! Form::label('hardwareType', 'Hardware Type', array('class' => 'col-md-2 col-form-label')) !!}
             <div class="col-md-10">
-                {!! Form::select('hardwareType', ['Mac' => 'Mac', 'Windows PC' => 'Windows PC',
+                {!! Form::select('hardwareType', ['Not specified' => 'Not specified', 'Mac' => 'Mac', 'Windows PC' => 'Windows PC',
                     'Linux' => 'Linux'], ['class' => 'form-control']) !!}
             </div>
         </div>
@@ -57,7 +57,7 @@
         <div class="form-group row" id="computerSoftware">
             {!! Form::label('softwareType', 'Software Type', array('class' => 'col-md-2 col-form-label')) !!}
             <div class="col-md-10">
-                {!! Form::select('softwareType', ['OSX' => 'OSX', 'Windows' => 'Windows',
+                {!! Form::select('softwareType', ['Not specified' => 'Not specified', 'OSX' => 'OSX', 'Windows' => 'Windows',
                     'Microsoft Office' => 'Microsoft Office', 'Lectopia' => 'Lectopia',
                     'Other' => 'Other'], ['class' => 'form-control']) !!}
             </div>
