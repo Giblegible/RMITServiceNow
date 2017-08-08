@@ -5,7 +5,7 @@
         <h2>Tickets</h2>
         <hr>
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-1">
                 <h3>ID</h3>
             </div>
             <div class="col-md-2">
@@ -18,17 +18,16 @@
                 <h3>Description</h3>
             </div>
             <div class="col-md-2">
-                <h3>Hardware Type</h3>
+                <h3>Status</h3>
             </div>
             <div class="col-md-2">
-                <h3>Software Type</h3>
             </div>
         </div>
         <hr>
         @foreach($tickets as $ticket)
             <div class="row">
-                <div class="col-md-2">
-                    <a href="{{ URL::to('pages/requestService', $ticket->id) }}">{{ $ticket->id}}</a>
+                <div class="col-md-1">
+                    <p>{{ $ticket->id}}</p>
                 </div>
                 <div class="col-md-2">
                     <p>{{ $ticket->serviceArea}}</p>
@@ -40,10 +39,10 @@
                     <p>{{ $ticket->problemDescription}}</p>
                 </div>
                 <div class="col-md-2">
-                    <p>{{ $ticket->hardwareType}}</p>
+                    <p>{{ $ticket->problemStatus}}</p>
                 </div>
                 <div class="col-md-2">
-                    <p>{{ $ticket->softwareType}}</p>
+                    <a href="{{ URL::to('pages/requestService', $ticket->id) }}" class="btn btn-success">More info.</a>
                 </div>
             </div>
             <hr>
