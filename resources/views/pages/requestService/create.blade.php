@@ -70,6 +70,8 @@
             </div>
         </div>
 
+        {!! Form::text('problemStatus', 'New', ['id' => 'problemStatusField']) !!}
+
         <button class="btn btn-success" type="submit">Submit Request</button>
 
         {!! Form::close() !!}
