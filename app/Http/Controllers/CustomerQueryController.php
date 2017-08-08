@@ -44,7 +44,8 @@ class CustomerQueryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ticket = CustomerQuery::find($id);
+        return view('pages.requestService.edit', compact ('ticket'));
     }
     /**
      * Update the specified resource in storage.
@@ -52,9 +53,12 @@ class CustomerQueryController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update($id)
+    public function update($id, Request $request)
     {
-        //
+        $ticketUpdate= $request->all();
+        $ticket = CustomerQuery::findOrFail($id);
+        $ticket->update($ticketUpdate);
+        return redirect()->back()->with('success','Case has been updated successfully');
     }
     /**
      * Remove the specified resource from storage.
