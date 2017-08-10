@@ -22,11 +22,32 @@ class CustomerQueryController extends Controller
 
     public function store(QueryRequest $request)
     {
-        $this->validate($request, [
-            'serviceArea' => 'required',
-            'workArea' => 'required',
-            'problemDescription' => 'required',
-        ]);
+        $allRequest = $request->all();
+
+        //Check the email to find if user has already submitted query
+        $email = $allRequest['email'];
+        $customerExists = Customer::where('email', $email)->first();
+
+        $customer = new Customer();
+
+        if(!$customerExists)
+        {
+            $customer->name = $allRequest['name'];
+            $customer->email = $email;
+            $customer->phoneNum = $allRequest['phoneNum'];
+            $customer->program = $allRequest['program'];
+            $customer->save();
+        }
+        else {
+            $customer = $customerExists;
+        }
+
+        $query = new CustomerQuery();
+        $query->serviceArea = $allRequest['serviceArea'];
+        $query->workArea = $allRequest['workArea'];
+        $query->problemDescription = $allRequest['problemDescription'];
+        $query->customer_id = $customer->id;
+        $query->save();
 
         CustomerQuery::create($request->all());
         return redirect('pages/requestService/create')->with('success','Service requested
