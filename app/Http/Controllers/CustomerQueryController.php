@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use App\Customer;
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Http\Requests\QueryRequest;
 use App\CustomerQuery;
 
 class CustomerQueryController extends Controller
@@ -19,7 +20,7 @@ class CustomerQueryController extends Controller
         return view('pages.requestService.create', ['query' => $query ]);
     }
 
-    public function store(Request $request)
+    public function store(QueryRequest $request)
     {
         $this->validate($request, [
             'serviceArea' => 'required',
