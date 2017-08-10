@@ -55,7 +55,19 @@ class CustomerQueryController extends Controller
 
     public function show($id) {
         $ticket = CustomerQuery::find($id);
-        return view('pages.requestService.show', compact('ticket'));
+        //Test DB to check if comments exist in case.
+        $comments = Comments::all()->where('ticket_id', $ticket->id)->first();
+
+        if(is_null($comments))
+        {
+            //Comments do not exist for case.
+            $comments = null;
+        }
+        else{
+            //A comment does exist for case, create query for all comments.
+            $comments = Comments::all()->where('ticket_id', $ticket->id);
+        }
+        return view('pages.requestService.show', compact('ticket', 'comments'));
     }
 
     /**
