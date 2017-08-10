@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use App\Customer;
 use App\Comments;
 use Illuminate\Http\Request;
@@ -7,51 +9,12 @@ use App\Http\Requests\CreateQueryRequest;
 use App\Http\Requests\UpdateQueryRequest;
 use App\CustomerQuery;
 
-class CustomerQueryController extends Controller
+class AdminQueryController extends Controller
 {
     public function index()
     {
         $tickets = CustomerQuery::all();
-        return view('pages.requestService.index', compact('tickets'));
-    }
-
-    public function create()
-    {
-        $query = new CustomerQuery;
-        return view('pages.requestService.create', ['query' => $query ]);
-    }
-
-    public function store(CreateQueryRequest $request)
-    {
-        $allRequest = $request->all();
-
-        //Check the email to find if user has already submitted query
-        $email = $allRequest['email'];
-        $customerExists = Customer::where('email', $email)->first();
-
-        $customer = new Customer();
-
-        if(!$customerExists)
-        {
-            $customer->name = $allRequest['name'];
-            $customer->email = $email;
-            $customer->phoneNum = $allRequest['phoneNum'];
-            $customer->program = $allRequest['program'];
-            $customer->save();
-        }
-        else {
-            $customer = $customerExists;
-        }
-
-        $query = new CustomerQuery();
-        $query->serviceArea = $allRequest['serviceArea'];
-        $query->workArea = $allRequest['workArea'];
-        $query->problemDescription = $allRequest['problemDescription'];
-        $query->customer_id = $customer->id;
-        $query->save();
-
-        return redirect('pages/requestService/create')->with('success','Service requested
-            successfully. Our team will be in touch within 72 hours.');
+        return view('pages.admin.adminRequestService.index', compact('tickets'));
     }
 
     public function show($id) {
@@ -68,7 +31,7 @@ class CustomerQueryController extends Controller
             //A comment does exist for case, create query for all comments.
             $comments = Comments::all()->where('ticket_id', $ticket->id);
         }
-        return view('pages.requestService.show', compact('ticket', 'comments'));
+        return view('pages.admin.adminRequestService.show', compact('ticket', 'comments'));
     }
 
     /**
@@ -81,7 +44,7 @@ class CustomerQueryController extends Controller
     {
         $ticket = CustomerQuery::find($id);
         $comments = Comments::all()->where('ticket_id', $ticket->id);
-        return view('pages.requestService.edit')->with('ticket', $ticket)->with('comments', $comments);
+        return view('pages.admin.adminRequestService.edit')->with('ticket', $ticket)->with('comments', $comments);
     }
     /**
      * Update the specified resource in storage.
@@ -108,7 +71,7 @@ class CustomerQueryController extends Controller
             $comments = new Comments();
             $comments->comment = $checkIfComment;
             $comments->ticket_id = $id;
-            $comments->customer_id = $ticket->customer_id;
+            $comments->adminComment = 'RMITServiceNow';
             $comments->save();
         }
         return redirect()->back()->with('success','Case has been updated successfully');

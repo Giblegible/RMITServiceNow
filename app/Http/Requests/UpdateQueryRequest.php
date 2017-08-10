@@ -24,7 +24,7 @@ class UpdateQueryRequest extends FormRequest
     public function rules()
     {
         return [
-            'comments' => 'alpha_dash',
+            'comments' => 'string|nullable',
         ];
     }
 }
