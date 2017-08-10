@@ -13,8 +13,9 @@ class AddStaffIdentifer extends Migration
      */
     public function up()
     {
-        Schema::table('customers', function (Blueprint $table) {
-            $table->boolean('Staff')->after('id');
+        Schema::table('comments', function (Blueprint $table) {
+            $table->string('adminComment')->nullable()->after('ticket_id');
+            $table->integer('customer_id')->unsigned()->nullable()->change();
         });
     }
 
@@ -25,7 +26,7 @@ class AddStaffIdentifer extends Migration
      */
     public function down()
     {
-        Schema::table('customer', function (Blueprint $table) {
+        Schema::table('comments', function (Blueprint $table) {
             //
         });
     }
