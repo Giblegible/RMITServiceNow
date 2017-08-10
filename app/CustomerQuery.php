@@ -14,4 +14,8 @@ class CustomerQuery extends Model
     public function customer_id() {
         return $this->belongsTo('App\Customer');
     }
+
+    public function comments() {
+        return $this->hasMany('App\Comments');
+    }
 }
