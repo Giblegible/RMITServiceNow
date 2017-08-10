@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use App\Customer;
-use App\Http\Requests;
+use App\Comments;
 use Illuminate\Http\Request;
 use App\Http\Requests\QueryRequest;
 use App\CustomerQuery;
@@ -80,6 +80,11 @@ class CustomerQueryController extends Controller
         $ticketUpdate= $request->all();
         $ticket = CustomerQuery::findOrFail($id);
         $ticket->update($ticketUpdate);
+        $comments = new Comments();
+        $comments->comment = $allRequest['comments'];
+        $comments->ticket_id = $id;
+        $comments->customer_id = $ticket->customer_id;
+        $comments->save();
         return redirect()->back()->with('success','Case has been updated successfully');
     }
     /**
