@@ -98,12 +98,19 @@ class CustomerQueryController extends Controller
         $ticket->problemSeverity = $allRequest['problemSeverity'];
         $ticket->save();
 
-        $comments = new Comments();
-        $comments->comment = $allRequest['comments'];
-        $comments->ticket_id = $id;
-        $comments->customer_id = $ticket->customer_id;
-        $comments->save();
-
+        $checkIfComment = $allRequest['comments'];
+        /**
+         * Check if the comment has been input.
+         * If yes, add comment to DB and save.
+         * If no, disregard creating comment.
+         */
+        if(!is_null($checkIfComment)) {
+            $comments = new Comments();
+            $comments->comment = $checkIfComment;
+            $comments->ticket_id = $id;
+            $comments->customer_id = $ticket->customer_id;
+            $comments->save();
+        }
         return redirect()->back()->with('success','Case has been updated successfully');
     }
     /**
