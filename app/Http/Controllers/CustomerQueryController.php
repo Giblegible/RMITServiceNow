@@ -93,7 +93,7 @@ class CustomerQueryController extends Controller
     {
         $allRequest = $request->all();
 
-        $ticket = CustomerQuery::findOrFail($id);
+        $ticket = CustomerQuery::find($id);
         $ticket->problemStatus = $allRequest['problemStatus'];
         $ticket->problemSeverity = $allRequest['problemSeverity'];
         $ticket->save();
