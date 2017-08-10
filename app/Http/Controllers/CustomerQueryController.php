@@ -3,7 +3,8 @@ namespace App\Http\Controllers;
 use App\Customer;
 use App\Comments;
 use Illuminate\Http\Request;
-use App\Http\Requests\QueryRequest;
+use App\Http\Requests\CreateQueryRequest;
+use App\Http\Requests\UpdateQueryRequest;
 use App\CustomerQuery;
 
 class CustomerQueryController extends Controller
@@ -20,7 +21,7 @@ class CustomerQueryController extends Controller
         return view('pages.requestService.create', ['query' => $query ]);
     }
 
-    public function store(QueryRequest $request)
+    public function store(CreateQueryRequest $request)
     {
         $allRequest = $request->all();
 
@@ -88,7 +89,7 @@ class CustomerQueryController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update($id, Request $request)
+    public function update($id, UpdateQueryRequest $request)
     {
         $allRequest = $request->all();
 
