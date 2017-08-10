@@ -79,7 +79,8 @@ class CustomerQueryController extends Controller
     public function edit($id)
     {
         $ticket = CustomerQuery::find($id);
-        return view('pages.requestService.edit', compact ('ticket'));
+        $comments = Comments::all()->where('ticket_id', $ticket->id);
+        return view('pages.requestService.edit')->with('ticket', $ticket)->with('comments', $comments);
     }
     /**
      * Update the specified resource in storage.
