@@ -10,4 +10,8 @@ class CustomerQuery extends Model
         'serviceArea', 'workArea', 'problemDescription', 'problemStatus',
         'problemSeverity', 'comments', 'hardwareType', 'softwareType',
     ];
+
+    public function customer_id() {
+        return $this->belongsTo('App\Customer');
+    }
 }
