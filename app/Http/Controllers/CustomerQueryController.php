@@ -90,14 +90,19 @@ class CustomerQueryController extends Controller
      */
     public function update($id, Request $request)
     {
-        $ticketUpdate= $request->all();
+        $allRequest = $request->all();
+
         $ticket = CustomerQuery::findOrFail($id);
-        $ticket->update($ticketUpdate);
+        $ticket->problemStatus = $allRequest['problemStatus'];
+        $ticket->problemSeverity = $allRequest['problemSeverity'];
+        $ticket->save();
+
         $comments = new Comments();
         $comments->comment = $allRequest['comments'];
         $comments->ticket_id = $id;
         $comments->customer_id = $ticket->customer_id;
         $comments->save();
+
         return redirect()->back()->with('success','Case has been updated successfully');
     }
     /**
