@@ -30,5 +30,4 @@
 @yield('content')
 </body>
 @include('includes.footer')
-<script src="{{ URL::asset('js/myFunctions.js') }}" type="text/javascript"></script>
 </html>
