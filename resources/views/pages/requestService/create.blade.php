@@ -24,9 +24,37 @@
                 <p>{{ $message }}</p>
             </div>
         @endif
+        {!! Form::model($query, ['action' => 'CustomerQueryController@store', 'id' => 'submitQuery']) !!}
+        <div class="form-group row">
+            {!! Form::label('name', 'Name', array('class' => 'col-md-2 col-form-label')) !!}
+            <div class="col-md-10">
+                {!! Form::text('name', '', ['class' => 'form-control']) !!}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            {!! Form::label('email', 'Email', array('class' => 'col-md-2 col-form-label')) !!}
+            <div class="col-md-10">
+                {!! Form::text('email', '', ['class' => 'form-control']) !!}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            {!! Form::label('phoneNum', 'Phone Number', array('class' => 'col-md-2 col-form-label')) !!}
+            <div class="col-md-10">
+                {!! Form::text('phoneNum', '', ['class' => 'form-control']) !!}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            {!! Form::label('program', 'Program Code', array('class' => 'col-md-2 col-form-label')) !!}
+            <div class="col-md-10">
+                {!! Form::text('program', '', ['class' => 'form-control']) !!}
+            </div>
+        </div>
 
         <hr>
-        {!! Form::model($query, ['action' => 'CustomerQueryController@store', 'id' => 'submitQuery']) !!}
+
         <div class="form-group row">
             {!! Form::label('serviceArea', 'Service Type', array('class' => 'col-md-2 col-form-label')) !!}
             <div class="col-md-10">

@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use App\Customer;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\CustomerQuery;
