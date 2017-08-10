@@ -26,6 +26,9 @@
                     <li>
                         <a href="{{ URL::to('trackprogress') }}">Track Progress</a>
                     </li>
+                    <li>
+                        <a href="{{ URL::to('pages/admin/auth') }}">ITS Staff</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
