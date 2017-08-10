@@ -23,8 +23,8 @@
             <p>No comments</p>
         @endif
         <hr>
-        <a href="{{ URL::asset('pages/requestService/'.$ticket->id.'/edit') }}" class="btn btn-success">Update</a>
-        <a href="{{ URL::to('pages/requestService') }}" class="btn btn-info">Back</a>
+        <a href="{{ route('adminRequestService.edit', $ticket->id) }}" class="btn btn-success">Update</a>
+        <a href="{{ route('adminRequestService.index') }}" class="btn btn-info">Back</a>
     </div>
 
 @endsection

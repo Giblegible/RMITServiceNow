@@ -13,3 +13,6 @@ Route::get('reportissue', 'PageController@reportissue');
 
 //Request Service View Route
 Route::resource('pages/requestService', 'CustomerQueryController');
+
+//Request Service View Route - Admin
+Route::resource('pages/admin/adminRequestService', 'AdminQueryController');
