@@ -49,7 +49,6 @@ class CustomerQueryController extends Controller
         $query->customer_id = $customer->id;
         $query->save();
 
-        CustomerQuery::create($request->all());
         return redirect('pages/requestService/create')->with('success','Service requested
             successfully. Our team will be in touch within 72 hours.');
     }
