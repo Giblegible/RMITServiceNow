@@ -82,6 +82,6 @@ footer p {
     /******
     CREATE
     ******/
-#computerHardware, #computerSoftware, #problemStatusField {
+#problemStatusField {
     display: none;
 }
