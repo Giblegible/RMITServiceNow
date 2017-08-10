@@ -26,6 +26,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 $factory->define(App\Customer::class, function (Faker\Generator $faker) {
    return [
        'name' => $faker->name,
+       'Staff' => $faker->boolean(50),
        'email' => $faker->unique()->safeEmail,
        'phoneNum' => $faker->phoneNumber,
        'program' => $faker->postcode,
