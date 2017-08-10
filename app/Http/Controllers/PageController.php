@@ -10,8 +10,8 @@ class PageController extends Controller
         return view('pages.home');
     }
 
-    public function requestserviceinfo() {
-        return view('pages.requestserviceinfo');
+    public function adminPage() {
+        return view('pages.admin.auth');
     }
 
     public function trackprogress() {
