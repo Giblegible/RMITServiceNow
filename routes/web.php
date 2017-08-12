@@ -11,6 +11,8 @@ Route::get('trackprogress', 'PageController@trackprogress');
 //Admin Page
 Route::get('pages/admin/auth', 'PageController@adminPage');
 
+Route::get('/{searchID}', 'AdminQueryController@filter');
+
 //Request Service View Route - Customer
 Route::resource('pages/requestService', 'CustomerQueryController');
 
