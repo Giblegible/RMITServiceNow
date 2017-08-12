@@ -21,9 +21,6 @@
                         <a href="{{ URL::to('pages/requestService/create') }}">Request Service</a>
                     </li>
                     <li>
-                        <a href="{{ URL::to('reportissue') }}">Report Issue</a>
-                    </li>
-                    <li>
                         <a href="{{ URL::to('trackprogress') }}">Track Progress</a>
                     </li>
                     <li>
