@@ -29,10 +29,11 @@ class CustomerQueryController extends Controller
         $email = $allRequest['email'];
         $customerExists = Customer::where('email', $email)->first();
 
-        $customer = new Customer();
+        $customer = null;
 
         if(!$customerExists)
         {
+            $customer = new Customer();
             $customer->name = $allRequest['name'];
             $customer->email = $email;
             $customer->phoneNum = $allRequest['phoneNum'];
@@ -47,6 +48,10 @@ class CustomerQueryController extends Controller
         $query->serviceArea = $allRequest['serviceArea'];
         $query->workArea = $allRequest['workArea'];
         $query->problemDescription = $allRequest['problemDescription'];
+        $query->hardwareType = $allRequest['hardwareType'];
+        $query->softwareType = $allRequest['softwareType'];
+        $query->problemStatus = "Pending";
+        $query->problemSeverity = "Not Specified";
         $query->customer_id = $customer->id;
         $query->save();
 
@@ -94,8 +99,11 @@ class CustomerQueryController extends Controller
         $allRequest = $request->all();
 
         $ticket = CustomerQuery::find($id);
-        $ticket->problemStatus = $allRequest['problemStatus'];
-        $ticket->problemSeverity = $allRequest['problemSeverity'];
+        $ticket->serviceArea = $allRequest['serviceArea'];
+        $ticket->workArea = $allRequest['workArea'];
+        $ticket->problemDescription = $allRequest['problemDescription'];
+        $ticket->hardwareType = $allRequest['hardwareType'];
+        $ticket->softwareType = $allRequest['softwareType'];
         $ticket->save();
 
         $checkIfComment = $allRequest['comments'];
