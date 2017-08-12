@@ -12,4 +12,8 @@ class Comments extends Model
     public function ticket_id() {
         return $this->belongsTo('App\CustomerQuery');
     }
+
+    public function message() {
+        return $this->belongsTo('App\Customer', 'customer_id','id');
+    }
 }

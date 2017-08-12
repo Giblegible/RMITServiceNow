@@ -13,4 +13,8 @@ class Customer extends Model
     public function customer_queries() {
         return $this->hasMany('App\CustomerQuery');
     }
+
+    public function comments() {
+        return $this->hasMany('App\Comments');
+    }
 }
