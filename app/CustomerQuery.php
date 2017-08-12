@@ -11,7 +11,7 @@ class CustomerQuery extends Model
         'problemSeverity', 'comments', 'hardwareType', 'softwareType',
     ];
 
-    public function customer_id() {
+    public function customer() {
         return $this->belongsTo('App\Customer');
     }
 

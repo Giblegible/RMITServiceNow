@@ -17,8 +17,4 @@ class PageController extends Controller
     public function trackprogress() {
         return view('pages.trackprogress');
     }
-
-    public function reportissue() {
-        return view('pages.reportissue');
-    }
 }

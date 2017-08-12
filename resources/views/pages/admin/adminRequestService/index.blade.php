@@ -2,7 +2,13 @@
 @section('title', 'View Tickets')
 @section('content')
     <div class="container">
-        <h2>Tickets</h2>
+        <h1>Tickets</h1>
+        <form action="{{ url('/{searchID}') }}" method="get">
+            <div class="container">
+                <label>Email:</label><input type="text" name="searchID">
+                <button class="btn btn-success" type="submit">Search</button>
+            </div>
+        </form>
         <hr>
         <div class="row">
             <div class="col-md-1">

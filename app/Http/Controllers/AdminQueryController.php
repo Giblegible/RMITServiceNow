@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use App\Comments;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateQueryRequest;
 use App\Http\Requests\UpdateQueryRequest;
@@ -14,6 +15,15 @@ class AdminQueryController extends Controller
     public function index()
     {
         $tickets = CustomerQuery::all();
+        return view('pages.admin.adminRequestService.index', compact('tickets'));
+    }
+
+    public function filter(Request $request)
+    {
+        $allRequest = $request->all();
+        Log::info('Searched: '.$allRequest['searchID']);
+        $customer = Customer::all()->where('email', $allRequest['searchID']);
+        $tickets = CustomerQuery::all()->where('customer_id', $customer->first()->id);
         return view('pages.admin.adminRequestService.index', compact('tickets'));
     }
 
@@ -61,6 +71,16 @@ class AdminQueryController extends Controller
         $ticket->problemSeverity = $allRequest['problemSeverity'];
         $ticket->save();
 
+        $checkIfResolved = $ticket->problemStatus;
+        if($checkIfResolved === "Resolved")
+        {
+            $comments = new Comments();
+            $comments->comment = "Hi ".$ticket->customer->name.", our team has marked your case as resolved. 
+                Please review the case and close if you feel we have resolved your query sufficiently.";
+            $comments->ticket_id = $id;
+            $comments->adminComment = 'RMITServiceNow';
+            $comments->save();
+        }
         $checkIfComment = $allRequest['comments'];
         /**
          * Check if the comment has been input.
