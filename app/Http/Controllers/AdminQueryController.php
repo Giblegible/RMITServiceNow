@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateQueryRequest;
 use App\Http\Requests\UpdateQueryRequest;
+use App\Http\Requests\FilterRequest;
 use App\CustomerQuery;
 
 class AdminQueryController extends Controller
@@ -18,12 +19,19 @@ class AdminQueryController extends Controller
         return view('pages.admin.adminRequestService.index', compact('tickets'));
     }
 
-    public function filter(Request $request)
+    public function filter(FilterRequest $request)
     {
         $allRequest = $request->all();
         Log::info('Searched: '.$allRequest['searchID']);
-        $customer = Customer::all()->where('email', $allRequest['searchID']);
-        $tickets = CustomerQuery::all()->where('customer_id', $customer->first()->id);
+        $customer = Customer::all()->where('email', $allRequest['searchID'])->first();
+        Log::info('Searching: '.$customer);
+        if(is_null($customer))
+        {
+            Log::info('No customer found');
+            $tickets = CustomerQuery::all();
+            return redirect('pages/admin/adminRequestService/')->with('fail', 'User does not exist')->with('tickets', $tickets);
+        }
+        $tickets = CustomerQuery::all()->where('customer_id', $customer->id);
         return view('pages.admin.adminRequestService.index', compact('tickets'));
     }
 
