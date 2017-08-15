@@ -143,7 +143,7 @@ class CustomerQueryController extends Controller
         if(is_null($customer))
         {
             Log::info('No customer found');
-            return redirect('pages/trackProgress/checkCredentials/')->with('fail', 'This account has not submitted a query.');
+            return redirect()->back()->with('fail', 'This account has not submitted a query.');
         }
         $tickets = CustomerQuery::all()->where('customer_id', $customer->id);
         return view('pages.trackProgress.userQueries', compact('tickets'));
