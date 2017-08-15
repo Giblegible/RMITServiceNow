@@ -5,6 +5,7 @@ use App\Comments;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateQueryRequest;
 use App\Http\Requests\UpdateQueryRequest;
+use App\Http\Requests\UserSearchRequest;
 use Illuminate\Support\Facades\Log;
 use App\CustomerQuery;
 
@@ -133,7 +134,7 @@ class CustomerQueryController extends Controller
         //
     }
 
-    public function getUserQueries(Request $request)
+    public function getUserQueries(UserSearchRequest $request)
     {
         $allRequest = $request->all();
         Log::info('Searched: '.$allRequest['findEmail']);
