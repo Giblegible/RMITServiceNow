@@ -5,6 +5,8 @@ use App\Comments;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateQueryRequest;
 use App\Http\Requests\UpdateQueryRequest;
+use App\Http\Requests\UserSearchRequest;
+use Illuminate\Support\Facades\Log;
 use App\CustomerQuery;
 
 class CustomerQueryController extends Controller
@@ -130,5 +132,20 @@ class CustomerQueryController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getUserQueries(UserSearchRequest $request)
+    {
+        $allRequest = $request->all();
+        Log::info('Searched: '.$allRequest['findEmail']);
+        $customer = Customer::all()->where('email', $allRequest['findEmail'])->first();
+        Log::info('Searching: '.$customer);
+        if(is_null($customer))
+        {
+            Log::info('No customer found');
+            return redirect()->back()->with('fail', 'This account has not submitted a query.');
+        }
+        $tickets = CustomerQuery::all()->where('customer_id', $customer->id);
+        return view('pages.trackProgress.userQueries', compact('tickets'));
     }
 }

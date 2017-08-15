@@ -15,6 +15,6 @@ class PageController extends Controller
     }
 
     public function trackprogress() {
-        return view('pages.trackprogress');
+        return view('pages.trackProgress.credentialsCheck');
     }
 }

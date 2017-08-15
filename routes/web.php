@@ -6,7 +6,9 @@ Route::get('/', 'PageController@home');
 Route::get('home', 'PageController@home');
 
 //Track Progress View Route
-Route::get('trackprogress', 'PageController@trackprogress');
+Route::get('trackProgress/credentialsCheck', 'PageController@trackprogress');
+
+Route::get('/{findEmail}', 'CustomerQueryController@getUserQueries');
 
 //Admin Page
 Route::get('pages/admin/auth', 'PageController@adminPage');
