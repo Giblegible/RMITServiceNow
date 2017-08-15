@@ -15,13 +15,15 @@ class CreateCustomerQueriesTable extends Migration
     {
         Schema::create('customer_queries', function (Blueprint $table) {
             $table->increments('id');
+
             $table->string('serviceArea');
             $table->string('workArea');
+            $table->string('hardwareType')->nullable();
+            $table->string('softwareType')->nullable();
             $table->string('problemDescription');
-            $table->string('problemStatus');
-            $table->string('problemSeverity');
-            $table->string('comments');
-            $table->timestamps();
+            $table->string('problemStatus')->default('New');
+            $table->string('problemSeverity')->nullable();
+            $table->string('comments')->nullable();
         });
     }
 

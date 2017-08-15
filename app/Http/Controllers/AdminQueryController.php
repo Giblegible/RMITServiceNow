@@ -1,62 +1,38 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use App\Customer;
 use App\Comments;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateQueryRequest;
 use App\Http\Requests\UpdateQueryRequest;
+use App\Http\Requests\FilterRequest;
 use App\CustomerQuery;
 
-class CustomerQueryController extends Controller
+class AdminQueryController extends Controller
 {
     public function index()
     {
         $tickets = CustomerQuery::all();
-        return view('pages.requestService.index', compact('tickets'));
+        return view('pages.admin.adminRequestService.index', compact('tickets'));
     }
 
-    public function create()
-    {
-        $query = new CustomerQuery;
-        return view('pages.requestService.create', ['query' => $query ]);
-    }
-
-    public function store(CreateQueryRequest $request)
+    public function filter(FilterRequest $request)
     {
         $allRequest = $request->all();
-
-        //Check the email to find if user has already submitted query
-        $email = $allRequest['email'];
-        $customerExists = Customer::where('email', $email)->first();
-
-        $customer = null;
-
-        if(!$customerExists)
+        Log::info('Searched: '.$allRequest['searchID']);
+        $customer = Customer::all()->where('email', $allRequest['searchID'])->first();
+        Log::info('Searching: '.$customer);
+        if(is_null($customer))
         {
-            $customer = new Customer();
-            $customer->name = $allRequest['name'];
-            $customer->email = $email;
-            $customer->phoneNum = $allRequest['phoneNum'];
-            $customer->program = $allRequest['program'];
-            $customer->save();
+            Log::info('No customer found');
+            $tickets = CustomerQuery::all();
+            return redirect('pages/admin/adminRequestService/')->with('fail', 'User does not exist')->with('tickets', $tickets);
         }
-        else {
-            $customer = $customerExists;
-        }
-
-        $query = new CustomerQuery();
-        $query->serviceArea = $allRequest['serviceArea'];
-        $query->workArea = $allRequest['workArea'];
-        $query->problemDescription = $allRequest['problemDescription'];
-        $query->hardwareType = $allRequest['hardwareType'];
-        $query->softwareType = $allRequest['softwareType'];
-        $query->problemStatus = "Pending";
-        $query->problemSeverity = "Not Specified";
-        $query->customer_id = $customer->id;
-        $query->save();
-
-        return redirect('pages/requestService/create')->with('success','Service requested
-            successfully. Our team will be in touch within 72 hours.');
+        $tickets = CustomerQuery::all()->where('customer_id', $customer->id);
+        return view('pages.admin.adminRequestService.index', compact('tickets'));
     }
 
     public function show($id) {
@@ -73,7 +49,7 @@ class CustomerQueryController extends Controller
             //A comment does exist for case, create query for all comments.
             $comments = Comments::all()->where('ticket_id', $ticket->id);
         }
-        return view('pages.requestService.show', compact('ticket', 'comments'));
+        return view('pages.admin.adminRequestService.show', compact('ticket', 'comments'));
     }
 
     /**
@@ -86,7 +62,7 @@ class CustomerQueryController extends Controller
     {
         $ticket = CustomerQuery::find($id);
         $comments = Comments::all()->where('ticket_id', $ticket->id);
-        return view('pages.requestService.edit')->with('ticket', $ticket)->with('comments', $comments);
+        return view('pages.admin.adminRequestService.edit')->with('ticket', $ticket)->with('comments', $comments);
     }
     /**
      * Update the specified resource in storage.
@@ -99,13 +75,20 @@ class CustomerQueryController extends Controller
         $allRequest = $request->all();
 
         $ticket = CustomerQuery::find($id);
-        $ticket->serviceArea = $allRequest['serviceArea'];
-        $ticket->workArea = $allRequest['workArea'];
-        $ticket->problemDescription = $allRequest['problemDescription'];
-        $ticket->hardwareType = $allRequest['hardwareType'];
-        $ticket->softwareType = $allRequest['softwareType'];
+        $ticket->problemStatus = $allRequest['problemStatus'];
+        $ticket->problemSeverity = $allRequest['problemSeverity'];
         $ticket->save();
 
+        $checkIfResolved = $ticket->problemStatus;
+        if($checkIfResolved === "Resolved")
+        {
+            $comments = new Comments();
+            $comments->comment = "Hi ".$ticket->customer->name.", our team has marked your case as resolved. 
+                Please review the case and close if you feel we have resolved your query sufficiently.";
+            $comments->ticket_id = $id;
+            $comments->adminComment = 'RMITServiceNow';
+            $comments->save();
+        }
         $checkIfComment = $allRequest['comments'];
         /**
          * Check if the comment has been input.
@@ -116,7 +99,7 @@ class CustomerQueryController extends Controller
             $comments = new Comments();
             $comments->comment = $checkIfComment;
             $comments->ticket_id = $id;
-            $comments->customer_id = $ticket->customer_id;
+            $comments->adminComment = 'RMITServiceNow';
             $comments->save();
         }
         return redirect()->back()->with('success','Case has been updated successfully');

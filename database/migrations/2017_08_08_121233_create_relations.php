@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateColumnRequirements extends Migration
+class CreateRelations extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,12 @@ class UpdateColumnRequirements extends Migration
     public function up()
     {
         Schema::table('customer_queries', function (Blueprint $table) {
-            $table->string('problemStatus')->nullable()->default(NULL)->change();
-            $table->string('problemSeverity')->nullable()->default(NULL)->change();;
-            $table->string('comments')->nullable()->default(NULL)->change();;
+            $table->integer('customer_id')->unsigned();
+            $table->foreign('customer_id')
+                ->references('id')
+                ->on('customers')
+                ->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
@@ -27,7 +30,7 @@ class UpdateColumnRequirements extends Migration
      */
     public function down()
     {
-        Schema::table('customer_queries', function (Blueprint $table) {
+        Schema::table('customerquery', function (Blueprint $table) {
             //
         });
     }

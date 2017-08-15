@@ -22,3 +22,25 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Customer::class, function (Faker\Generator $faker) {
+   return [
+       'name' => $faker->name,
+       'email' => $faker->unique()->safeEmail,
+       'phoneNum' => $faker->phoneNumber,
+       'program' => $faker->postcode,
+   ];
+});
+
+$factory->define(App\CustomerQuery::class, function (Faker\Generator $faker) {
+    return [
+        'serviceArea' => $faker->country,
+        'workArea' => $faker->city,
+        'problemDescription' => $faker->sentence,
+        'problemStatus' => 'Pending',
+        'problemSeverity' => 'Pending',
+        'customer_id' => function() {
+            return factory(App\Customer::class)->create()->id;
+        }
+    ];
+});
