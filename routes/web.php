@@ -11,7 +11,9 @@ Route::resource('requestService', 'CustomerQueryController');
 Route::get('requestserviceinfo', 'PageController@requestserviceinfo');
 
 //Track Progress View Route
-Route::get('trackprogress', 'PageController@trackprogress');
+Route::get('trackProgress/credentialsCheck', 'PageController@trackprogress');
+
+Route::get('/{findEmail}', 'CustomerQueryController@getUserQueries');
 
 //Report an Issue View Route
 Route::get('reportissue', 'PageController@reportissue');

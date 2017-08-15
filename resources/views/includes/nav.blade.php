@@ -21,7 +21,7 @@
                         <a href="{{ URL::to('requestserviceinfo') }}">Request Service</a>
                     </li>
                     <li>
-                        <a href="{{ URL::to('trackprogress') }}">Track Progress</a>
+                        <a href="{{ URL::to('trackProgress\credentialsCheck') }}">Track Progress</a>
                     </li>
                     <li>
                         <a href="{{ URL::to('reportissue') }}">Report Issue</a>
