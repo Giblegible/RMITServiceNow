@@ -18,13 +18,13 @@
                         <a href="{{ URL::to('home') }}">Home</a>
                     </li>
                     <li>
-                        <a href="{{ URL::to('requestserviceinfo') }}">Request Service</a>
+                        <a href="{{ URL::to('pages/requestService/create') }}">Request Service</a>
                     </li>
                     <li>
                         <a href="{{ URL::to('trackProgress\credentialsCheck') }}">Track Progress</a>
                     </li>
                     <li>
-                        <a href="{{ URL::to('reportissue') }}">Report Issue</a>
+                        <a href="{{ URL::to('pages/admin/auth') }}">ITS Staff</a>
                     </li>
                 </ul>
             </div>
