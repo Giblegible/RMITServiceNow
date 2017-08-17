@@ -203,4 +203,32 @@
         </div>
 
     </section>
+
+    <section id="action" class="responsive">
+
+        <div class="vertical-center">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="action take-tour">
+
+                        <div class="col-sm-7 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
+
+                            <h1 class="title">FAQs</h1>
+
+                            <p>Commonly asked questions!</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
 @endsection
