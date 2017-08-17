@@ -118,9 +118,9 @@
 
                         <div class="col-sm-7 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
 
-                            <h1 class="title">About Us</h1>
+                            <h1 class="title">How it works!</h1>
 
-                            <p>A responsive, fast &amp; easy to communicate support team.</p>
+                            <p>A responsive, fast &amp; easy to use ticketing system.</p>
 
                         </div>
 
@@ -142,7 +142,7 @@
 
             <div class="row">
 
-                <div class="single-features">
+                <div class="single-features" id="homePageFeature">
 
                     <div class="col-sm-5 col-sm-offset-1 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
 
@@ -160,7 +160,7 @@
 
                 </div>
 
-                <div class="single-features">
+                <div class="single-features" id="homePageFeature">
 
                     <div class="col-sm-6 col-sm-offset-1 align-right wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
 
@@ -179,11 +179,11 @@
 
                 </div>
 
-                <div class="single-features">
+                <div class="single-features" id="homePageFeature">
 
                     <div class="col-sm-5 col-sm-offset-1 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
 
-                        <img src="{{URL::asset('images/rmitready.gif')}}" alt="slider image">
+                        <img src="{{URL::asset('images/rmitready.gif')}}" alt="slider image" class="img-responsive" id="homePageImg">
 
                     </div>
 
