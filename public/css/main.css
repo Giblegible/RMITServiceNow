@@ -15,6 +15,9 @@ html, body {
     HEADER
  ******/
 
+#titleBar {
+    margin-bottom: 10px;
+}
 /******
     BODY
  ******/
@@ -40,6 +43,22 @@ html, body {
 
 #general {
     color: deepskyblue;
+}
+
+#mail {
+    color: red;
+    font-size: 15em !important;
+}
+
+#pencil {
+    color: sandybrown;
+    font-size: 15em !important;
+}
+
+#smile {
+    color: yellow;
+    text-shadow: 0px 0px 3px black;
+    font-size: 15em !important;
 }
 
 .filter {
@@ -86,6 +105,22 @@ footer p {
     /******
     CREATE
     ******/
-#problemStatusField {
-    display: none;
+
+#name, #email, #program, #phoneNum, #problemDescription {
+    border-color: blue;
 }
+
+#serviceArea, #workArea, #hardwareType, #softwareType {
+    color: black;
+    width: 60%;
+    border-color: blue;
+}
+
+/******
+    404 Page
+ ******/
+#errorTitle {
+    text-align: center;
+}
+
+

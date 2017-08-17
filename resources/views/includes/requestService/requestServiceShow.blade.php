@@ -1,7 +1,3 @@
-
-    <h2>Service Request</h2>
-    <a href="{{ route('adminRequestService.index') }}" class="btn btn-info">Back</a>
-    <hr>
     <p>ID: {{ $ticket->id }}</p>
     <p>Work Area: {{ $ticket->workArea}}</p>
     <hr>
