@@ -5,15 +5,14 @@ Route::get('/', 'PageController@home');
 
 Route::get('home', 'PageController@home');
 
+Route::get('/{searchID}', 'AdminQueryController@filter');
+Route::get('trackProgress/credentialsCheck/{findEmail}', 'CustomerQueryController@getUserQueries');
+
 //Track Progress View Route
 Route::get('trackProgress/credentialsCheck', 'PageController@trackprogress');
 
-Route::get('/{findEmail}', 'CustomerQueryController@getUserQueries');
-
 //Admin Page
 Route::get('pages/admin/auth', 'PageController@adminPage');
-
-Route::get('/{searchID}', 'AdminQueryController@filter');
 
 //Request Service View Route - Customer
 Route::resource('pages/requestService', 'CustomerQueryController');
