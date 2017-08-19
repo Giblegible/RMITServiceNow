@@ -114,14 +114,30 @@ footer p {
     CREATE
     ******/
 
-#name, #email, #program, #phoneNum, #problemDescription {
-    border-color: blue;
+#name, #email, #program, #phoneNum, #problemDescription, #comments, #problemStatus, #problemSeverity {
+    border-color: black;
+}
+
+#name:focus,
+#email:focus,
+#program:focus,
+#phoneNum:focus,
+#problemDescription:focus,
+#comments:focus,
+#problemSeverity:focus,
+#problemStatus:focus{
+    border-color: black;
+    box-shadow: 0 0 15px rgba(82,168,236,.6) !important;;
 }
 
 #serviceArea, #workArea, #hardwareType, #softwareType {
     color: black;
     width: 60%;
-    border-color: blue;
+    border-color: black;
+}
+
+#pendingTickets, #inProgress, #unresolved, #resolved {
+    display: none;
 }
 
 /******
@@ -129,6 +145,28 @@ footer p {
  ******/
 #errorTitle {
     text-align: center;
+}
+
+/******
+    Admin Page
+ ******/
+
+#searchButton {
+    margin-top: 10px;
+}
+
+#filterTickets {
+    padding: 10px;
+    padding-top: 0px;
+}
+
+#emailText {
+    border-color: black;
+}
+
+#displayDataIndexPage button {
+    border: none;
+    background-color: transparent;
 }
 
 
