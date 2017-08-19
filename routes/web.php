@@ -5,10 +5,9 @@ Route::get('/', 'PageController@home');
 
 Route::get('home', 'PageController@home');
 
-Route::get('/{searchID}', 'AdminQueryController@filter');
-Route::get('trackProgress/credentialsCheck/{findEmail}', 'CustomerQueryController@getUserQueries');
-
-//Track Progress View Route
+//Track Progress
+//Post the email that the user wants to view current queries for.
+Route::post('pages/trackProgress/userQueries', ['uses' => 'CustomerQueryController@getUserQueries']);
 Route::get('trackProgress/credentialsCheck', 'PageController@trackprogress');
 
 //Admin Page
@@ -18,4 +17,6 @@ Route::get('pages/admin/auth', 'PageController@adminPage');
 Route::resource('pages/requestService', 'CustomerQueryController');
 
 //Request Service View Route - Admin
+//Post the email that ITS staff want to see queries for.
+Route::post('pages/admin/adminRequestService/index', ['uses' => 'AdminQueryController@filter']);
 Route::resource('pages/admin/adminRequestService', 'AdminQueryController');
