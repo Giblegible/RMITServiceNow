@@ -25,14 +25,13 @@ class CreateQueryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' => 'required|alpha_spaces',
             'email' => 'required|Email',
             'phoneNum' => 'required|numeric',
             'program' => 'required',
             'serviceArea' => 'required',
             'workArea' => 'required',
             'problemDescription' => 'required',
-
         ];
     }
 }

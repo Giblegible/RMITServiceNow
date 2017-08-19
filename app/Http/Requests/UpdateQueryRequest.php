@@ -24,6 +24,7 @@ class UpdateQueryRequest extends FormRequest
     public function rules()
     {
         return [
+            'problemDescription' => 'nullable|string',
             'comments' => 'string|nullable',
         ];
     }
