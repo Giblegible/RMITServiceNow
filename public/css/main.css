@@ -15,6 +15,9 @@ html, body {
     HEADER
  ******/
 
+#titleBar {
+    margin-bottom: 10px;
+}
 /******
     BODY
  ******/
@@ -42,8 +45,32 @@ html, body {
     color: deepskyblue;
 }
 
+#mail {
+    color: red;
+    font-size: 15em !important;
+}
+
+#pencil {
+    color: sandybrown;
+    font-size: 15em !important;
+    padding-top: 45px;
+}
+
 .filter {
     text-align: center;
+}
+
+.single-features {
+    height: 350px;
+}
+
+#homePageImg {
+    padding-top: 65px;
+}
+
+#homePageFeature {
+    padding-top: 20px;
+    padding-bottom: 30px;
 }
 
 /******
@@ -86,6 +113,60 @@ footer p {
     /******
     CREATE
     ******/
-#problemStatusField {
+
+#name, #email, #program, #phoneNum, #problemDescription, #comments, #problemStatus, #problemSeverity {
+    border-color: black;
+}
+
+#name:focus,
+#email:focus,
+#program:focus,
+#phoneNum:focus,
+#problemDescription:focus,
+#comments:focus,
+#problemSeverity:focus,
+#problemStatus:focus{
+    border-color: black;
+    box-shadow: 0 0 15px rgba(82,168,236,.6) !important;;
+}
+
+#serviceArea, #workArea, #hardwareType, #softwareType {
+    color: black;
+    width: 60%;
+    border-color: black;
+}
+
+#pendingTickets, #inProgress, #unresolved, #resolved {
     display: none;
 }
+
+/******
+    404 Page
+ ******/
+#errorTitle {
+    text-align: center;
+}
+
+/******
+    Admin Page
+ ******/
+
+#searchButton {
+    margin-top: 10px;
+}
+
+#filterTickets {
+    padding: 10px;
+    padding-top: 0px;
+}
+
+#emailText {
+    border-color: black;
+}
+
+#displayDataIndexPage button {
+    border: none;
+    background-color: transparent;
+}
+
+

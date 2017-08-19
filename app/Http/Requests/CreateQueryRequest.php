@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CreateQueryRequest extends FormRequest
 {
@@ -24,9 +25,9 @@ class CreateQueryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' => 'required|alpha_spaces',
             'email' => 'required|Email',
-            'phoneNum' => 'required',
+            'phoneNum' => 'required|numeric',
             'program' => 'required',
             'serviceArea' => 'required',
             'workArea' => 'required',

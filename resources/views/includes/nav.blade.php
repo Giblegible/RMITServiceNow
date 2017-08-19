@@ -1,34 +1,54 @@
     <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">RMIT Service Now</a>
+    <header id="header">
+
+        <div class="navbar navbar-inverse" role="banner">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+
+                        <span class="sr-only">Toggle navigation</span>
+
+                        <span class="icon-bar"></span>
+
+                        <span class="icon-bar"></span>
+
+                        <span class="icon-bar"></span>
+
+                    </button>
+
+
+                    <a class="" href="{{ URL::to('home') }}">
+
+                        <h1><img src="{{URL::asset('images/rmitlogonav.png')}}" alt="logo" ></h1>
+
+                    </a>
+
+
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    <ul class="nav navbar-nav navbar-right" id="navigationBar">
+
+                        <li id='homeL'><a href="{{ URL::to('home') }}">Home</a></li>
+
+                        <li id='reqServiceL' ><a href="{{ URL::to('pages/requestService/create') }}">Request Service</a></li>
+
+                        <li id='trackProgL' ><a href="{{ URL::to('trackProgress\credentialsCheck') }}">Track Progress</a></li>
+
+                        <li id='adminL'><a href="{{ URL::to('pages/admin/auth') }}">ITS Staff</a></li>
+
+                    </ul>
+
+                </div>
+
             </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="{{ URL::to('home') }}">Home</a>
-                    </li>
-                    <li>
-                        <a href="{{ URL::to('pages/requestService/create') }}">Request Service</a>
-                    </li>
-                    <li>
-                        <a href="{{ URL::to('trackProgress\credentialsCheck') }}">Track Progress</a>
-                    </li>
-                    <li>
-                        <a href="{{ URL::to('pages/admin/auth') }}">ITS Staff</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+
         </div>
-        <!-- /.container -->
-    </nav>
+
+    </header>
+    <!--/#header-->
