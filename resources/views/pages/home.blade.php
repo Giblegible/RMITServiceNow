@@ -231,4 +231,35 @@
         </div>
 
     </section>
+    <div class="container">
+        <div class="col-md-12">
+            <h3>1. How do I report an issue or request a service?</h3>
+            <ul>
+                <li><p>To report an issue or request a service you can submit a ticket through our <a href="{{ URL::to('pages/requestService/create') }}">'Request Service'</a> page.</p></li>
+            </ul>
+
+            <h3>2. How long should I have to wait to expect a response?</h3>
+            <ul>
+                <li><p>Wait time can depend on multiple factors, such as our peak periods (Timetable season) as well as potential events that cause a heavier load on the team. Generally speaking
+                    we aim to respond to <i>all</i> queries within 72 hours.</p></li>
+            </ul>
+
+            <h3>3. How can I view the responses?</h3>
+            <ul>
+                <li><p>To view the response of an ITS Staff member, simply view the ticket you have created and a comments section can be located towards the bottom of the page. You can even reply!</p></li>
+            </ul>
+
+            <h3>4. I noticed a mistake after I submitted my ticket, how can I change this?</h3>
+            <ul>
+                <li><p>Don't stress! We all make mistakes, but this is easy to fix! All you have to do is view the ticket you have created and select 'Update', all details of the query can be updated without trouble!
+                    (Please note that if a mistake was made in your personal details, this cannot be amended. Leave a comment on your query and the ITS Staff will be able to assist you)</p></li>
+            </ul>
+
+            <h3>5. My query has been resolved and I am happy to close this issue, how can I do this?</h3>
+            <ul>
+                <li><p>Once the ITS team have fixed your problem or been able to provide the service you required, feel free to "Close" the case. To do this, view your ticket and 'Update' the case,
+                    from here on the top right corner of the page, you can select "Close Query".</p></li>
+            </ul>
+        </div>
+    </div>
 @endsection
