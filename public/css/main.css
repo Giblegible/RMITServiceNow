@@ -1,0 +1,172 @@
+/******
+    GENERAL
+ ******/
+html, body {
+    background-color: #fff;
+    color: #636b6f;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 250;
+    height: 100vh;
+    margin: 0;
+    padding-top: 20px;
+}
+
+/******
+    HEADER
+ ******/
+
+#titleBar {
+    margin-bottom: 10px;
+}
+/******
+    BODY
+ ******/
+    /***
+        HOME PAGE
+     ***/
+
+#about img {
+    margin: 0 auto;
+}
+
+.icon {
+    font-size: 10em !important;
+}
+
+#critical {
+    color: red;
+}
+
+#non-critical {
+    color: orange;
+}
+
+#general {
+    color: deepskyblue;
+}
+
+#mail {
+    color: red;
+    font-size: 15em !important;
+}
+
+#pencil {
+    color: sandybrown;
+    font-size: 15em !important;
+    padding-top: 45px;
+}
+
+.filter {
+    text-align: center;
+}
+
+.single-features {
+    height: 350px;
+}
+
+#homePageImg {
+    padding-top: 65px;
+}
+
+#homePageFeature {
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+
+/******
+    FOOTER
+ ******/
+footer {
+    text-align: center;
+    font-size: 12px;
+    padding-bottom: 10px;
+}
+
+footer hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+footer hr:after {
+    /*Image reference: https://www.rmit.edu.au/about/our-brand*/
+    content: url('../images/rmitlogo.jpg');
+    display: inline-block;
+    position: relative;
+    top: -0.7em;
+    font-size: 1.5em;
+    padding: 0 0.25em;
+    background: white;
+}
+
+footer p {
+    padding: 10px;
+}
+
+/******
+    REQUEST SERVICE
+ ******/
+    /******
+    INDEX
+    ******/
+
+    /******
+    CREATE
+    ******/
+
+#name, #email, #program, #phoneNum, #problemDescription, #comments, #problemStatus, #problemSeverity {
+    border-color: black;
+}
+
+#name:focus,
+#email:focus,
+#program:focus,
+#phoneNum:focus,
+#problemDescription:focus,
+#comments:focus,
+#problemSeverity:focus,
+#problemStatus:focus{
+    border-color: black;
+    box-shadow: 0 0 15px rgba(82,168,236,.6) !important;;
+}
+
+#serviceArea, #workArea, #hardwareType, #softwareType {
+    color: black;
+    width: 60%;
+    border-color: black;
+}
+
+#pendingTickets, #inProgress, #unresolved, #resolved {
+    display: none;
+}
+
+/******
+    404 Page
+ ******/
+#errorTitle {
+    text-align: center;
+}
+
+/******
+    Admin Page
+ ******/
+
+#searchButton {
+    margin-top: 10px;
+}
+
+#filterTickets {
+    padding: 10px;
+    padding-top: 0px;
+}
+
+#emailText {
+    border-color: black;
+}
+
+#displayDataIndexPage button {
+    border: none;
+    background-color: transparent;
+}
+
+

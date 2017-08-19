@@ -5,6 +5,10 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Psr\Log\InvalidArgumentException;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -44,6 +48,10 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof NotFoundHttpException or $exception instanceof \InvalidArgumentException) {
+            Log::alert('404 Page from attempted path - '.$request->path());
+            return response()->view('errors.404', [], 404);
+        }
         return parent::render($request, $exception);
     }
 
