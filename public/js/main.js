@@ -110,4 +110,21 @@ jQuery(function($) {'use strict';
 		});
 	}
 
+	//Filter Queries
+	$('#pendingTicketsOption').on('click', function() {
+		$('#pendingTickets').toggle();
+	});
+
+    $('#inProgressOption').on('click', function() {
+        $('#inProgress').toggle();
+    });
+
+    $('#unresolvedOption').on('click', function() {
+        $('#unresolved').toggle();
+    });
+
+    $('#resolvedOption').on('click', function() {
+        $('#resolved').toggle();
+    });
+
 });
