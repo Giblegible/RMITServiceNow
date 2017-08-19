@@ -22,17 +22,17 @@ class AdminQueryController extends Controller
     public function filter(FilterRequest $request)
     {
         $allRequest = $request->all();
-        Log::info('Searched: '.$allRequest['searchID']);
-        $customer = Customer::all()->where('email', $allRequest['searchID'])->first();
-        Log::info('Searching: '.$customer);
+        Log::info('ADMIN - Search Request made for: '.$allRequest['emailText']);
+        $customer = Customer::all()->where('email', $allRequest['emailText'])->first();
         if(is_null($customer))
         {
-            Log::info('No customer found');
+            Log::info('ADMIN - Search Request Failed: No customer found.');
             $tickets = CustomerQuery::all();
             return redirect('pages/admin/adminRequestService/')->with('fail', 'User does not exist')->with('tickets', $tickets);
         }
         $tickets = CustomerQuery::all()->where('customer_id', $customer->id);
-        return view('pages.admin.adminRequestService.index', compact('tickets'));
+        Log::info('ADMIN - Search Request Successful: Returning '.$tickets->count().' cases!');
+        return view('pages/admin/adminRequestService/index')->with('tickets', $tickets);
     }
 
     public function show($id) {
@@ -88,6 +88,7 @@ class AdminQueryController extends Controller
             $comments->ticket_id = $id;
             $comments->adminComment = 'RMITServiceNow';
             $comments->save();
+            Log::info('ADMIN - Update Request Successful: Admin has closed case, ID: '.$ticket->id);
         }
         $checkIfComment = $allRequest['comments'];
         /**
@@ -101,17 +102,9 @@ class AdminQueryController extends Controller
             $comments->ticket_id = $id;
             $comments->adminComment = 'RMITServiceNow';
             $comments->save();
+            Log::info('ADMIN - Update Request Successful: Admin has added comments to case, ID: '.$ticket->id);
         }
+        Log::info('ADMIN - Update Request Successful: Admin has updated case, ID: '.$ticket->id);
         return redirect()->back()->with('success','Case has been updated successfully');
-    }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
