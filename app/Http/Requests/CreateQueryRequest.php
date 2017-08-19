@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CreateQueryRequest extends FormRequest
 {
@@ -26,11 +27,12 @@ class CreateQueryRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required|Email',
-            'phoneNum' => 'required',
+            'phoneNum' => 'required|numeric',
             'program' => 'required',
             'serviceArea' => 'required',
             'workArea' => 'required',
             'problemDescription' => 'required',
+
         ];
     }
 }

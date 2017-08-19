@@ -24,7 +24,7 @@ class FilterRequest extends FormRequest
     public function rules()
     {
         return [
-            'searchID' => 'email|required',
+            'emailText' => 'email|required',
         ];
     }
 }
