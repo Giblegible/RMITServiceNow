@@ -44,7 +44,7 @@
             </div>
         @endif
         {!! Form::model($query, ['action' => 'CustomerQueryController@store', 'id' => 'submitQuery']) !!}
-
+        {{ csrf_field() }}
         <div><h2>Personal Details</h2></div>
         <div class="col-md-6">
             <div class="form-group row">

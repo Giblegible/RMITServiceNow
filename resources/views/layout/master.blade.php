@@ -21,8 +21,6 @@
 
     <link href="{{URL::asset('css/css/animate.min.css')}}" rel="stylesheet">
 
-    <link href="{{URL::asset('css/css/lightbox.css')}}" rel="stylesheet">
-
     <link href="{{URL::asset('css/css/main.css')}}" rel="stylesheet">
 
     <link href="{{URL::asset('css/css/responsive.css')}}" rel="stylesheet">

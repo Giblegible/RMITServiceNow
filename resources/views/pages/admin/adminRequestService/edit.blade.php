@@ -1,7 +1,31 @@
 @extends('layout.master')
 @section('title', 'Request Service')
 @section('content')
-    <h1>Update Issue</h1>
+    <section id="action" class="responsive">
+
+        <div class="vertical-center">
+
+            <div class="container" >
+
+                <div class="row">
+
+                    <div class="action">
+
+                        <div class="col-sm-7 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
+
+                            <h1 class="title"><b>Update {{ $ticket->customer->name }}'s Issue - ID: {{ $ticket->id }}</b></h1>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
 
     @if (count($errors) > 0)
         <div class="alert alert-danger">
@@ -18,9 +42,10 @@
             <p>{{ $message }}</p>
         </div>
     @endif
-
-    <hr>
     <div class="container">
+        <hr>
+        <a href="{{ URL::to('pages/admin/adminRequestService', $ticket->id) }}" class="btn btn-info">Back</a>
+        <hr>
         {!! Form::model($ticket, ['method' => 'PATCH','route'=>['adminRequestService.update',$ticket->id]]) !!}
         <div class="form-group">
             {!! Form::label('problemStatus', 'Problem Status:') !!}
@@ -35,7 +60,7 @@
         </div>
         <div class="form-group">
             {!! Form::label('comments', 'Comments:') !!}
-            {!! Form::text('comments',null,['class'=>'form-control']) !!}
+            {!! Form::textarea('comments',null,['class'=>'form-control']) !!}
         </div>
         <div class="form-group">
             {!! Form::submit('Save', ['class' => 'btn btn-success']) !!}
