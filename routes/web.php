@@ -20,3 +20,7 @@ Route::resource('pages/requestService', 'CustomerQueryController');
 //Post the email that ITS staff want to see queries for.
 Route::post('pages/admin/adminRequestService/index', ['uses' => 'AdminQueryController@filter']);
 Route::resource('pages/admin/adminRequestService', 'AdminQueryController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

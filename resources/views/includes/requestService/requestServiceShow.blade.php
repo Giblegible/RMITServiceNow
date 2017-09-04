@@ -63,14 +63,14 @@
     <div class="col-md-12">
         @if($comments != null)
             @foreach($comments as $post)
-                {{--Check if the message has a user name.
-                If yes, print the name of user.
-                If no, print the admin comment (since comment exists, and not customer).--}}
-                @if(!is_null($post->message))
+                {{--Check if the message has an admin comment.
+                If no, print the name of user.
+                If yes, print the admin comment (since comment exists, and not customer).--}}
+                @if(is_null($post->adminComment))
                     <div class="col-md-12" id="customerComment">
                         <div class="col-md-6">
                             <div class="panel panel-info">
-                                <div class="panel-heading">{{ $post->message->name }}</div>
+                                <div class="panel-heading">{{ $post->customer_queries->customer->name }}</div>
                                 <div class="panel panel-body">{{ $post->comment }}</div>
                                 <div class="panel-footer">{{ $post->created_at->timezone('Australia/Melbourne')->format('H:i d-m-Y') }}</div>
                             </div>

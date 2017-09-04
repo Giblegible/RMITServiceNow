@@ -11,8 +11,7 @@
 
                 <div class="">
 
-                    <p>&copy; James McLennan - s3543182. All Rights Reserved.
-                    <br>This theme has been taken from Themeum</p>
+                    <p>This theme has been taken from Themeum</p>
 
                 </div>
 

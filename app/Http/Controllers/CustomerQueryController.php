@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use App\Customer;
-use App\Comments;
+use App\Comment;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateQueryRequest;
 use App\Http\Requests\UpdateQueryRequest;
@@ -64,7 +64,7 @@ class CustomerQueryController extends Controller
     public function show($id) {
         $ticket = CustomerQuery::find($id);
         //Test DB to check if comments exist in case.
-        $comments = Comments::all()->where('ticket_id', $ticket->id)->first();
+        $comments = Comment::all()->where('ticket_id', $ticket->id)->first();
         $user = session('email');
         Log::info('CUSTOMER - Show Case: '.$user);
 
@@ -75,7 +75,10 @@ class CustomerQueryController extends Controller
         }
         else{
             //A comment does exist for case, create query for all comments.
-            $comments = Comments::all()->where('ticket_id', $ticket->id);
+            $comments = Comment::all()->where('ticket_id', $ticket->id);
+            foreach($comments as $comment) {
+                Log::info($comment->customer_queries->customer->name);
+            }
         }
         return view('pages.requestService.show', compact('ticket', 'comments', 'user'));
     }
@@ -89,7 +92,7 @@ class CustomerQueryController extends Controller
     public function edit($id)
     {
         $ticket = CustomerQuery::find($id);
-        $comments = Comments::all()->where('ticket_id', $ticket->id);
+        $comments = Comment::all()->where('ticket_id', $ticket->id);
         return view('pages.requestService.edit')->with('ticket', $ticket)->with('comments', $comments);
     }
     /**
@@ -118,10 +121,9 @@ class CustomerQueryController extends Controller
          * If no, disregard creating comment.
          */
         if(!is_null($checkIfComment)) {
-            $comments = new Comments();
+            $comments = new Comment();
             $comments->comment = $checkIfComment;
             $comments->ticket_id = $id;
-            $comments->customer_id = $ticket->customer_id;
             $comments->save();
             Log::info('CUSTOMER -  Comment added for ID:'.$id);
         }

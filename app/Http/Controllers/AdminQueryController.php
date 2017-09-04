@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
-use App\Comments;
+use App\Comment;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateQueryRequest;
@@ -38,7 +38,7 @@ class AdminQueryController extends Controller
     public function show($id) {
         $ticket = CustomerQuery::find($id);
         //Test DB to check if comments exist in case.
-        $comments = Comments::all()->where('ticket_id', $ticket->id)->first();
+        $comments = Comment::all()->where('ticket_id', $ticket->id)->first();
 
         if(is_null($comments))
         {
@@ -47,7 +47,7 @@ class AdminQueryController extends Controller
         }
         else{
             //A comment does exist for case, create query for all comments.
-            $comments = Comments::all()->where('ticket_id', $ticket->id);
+            $comments = Comment::all()->where('ticket_id', $ticket->id);
         }
         return view('pages.admin.adminRequestService.show', compact('ticket', 'comments'));
     }
@@ -61,7 +61,7 @@ class AdminQueryController extends Controller
     public function edit($id)
     {
         $ticket = CustomerQuery::find($id);
-        $comments = Comments::all()->where('ticket_id', $ticket->id);
+        $comments = Comment::all()->where('ticket_id', $ticket->id);
         return view('pages.admin.adminRequestService.edit')->with('ticket', $ticket)->with('comments', $comments);
     }
     /**
@@ -82,7 +82,7 @@ class AdminQueryController extends Controller
         $checkIfResolved = $ticket->problemStatus;
         if($checkIfResolved === "Resolved")
         {
-            $comments = new Comments();
+            $comments = new Comment();
             $comments->comment = "Hi ".$ticket->customer->name.", our team has marked your case as resolved. 
                 Please review the case and close if you feel we have resolved your query sufficiently.";
             $comments->ticket_id = $id;
@@ -97,7 +97,7 @@ class AdminQueryController extends Controller
          * If no, disregard creating comment.
          */
         if(!is_null($checkIfComment)) {
-            $comments = new Comments();
+            $comments = new Comment();
             $comments->comment = $checkIfComment;
             $comments->ticket_id = $id;
             $comments->adminComment = 'RMITServiceNow';
