@@ -4,13 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Model
+class Comment extends Model
 {
     protected $fillable = [
-        'name', 'email', 'phoneNum', 'program',
+        'comment', 'ticket_id',
     ];
 
     public function customer_queries() {
-        return $this->hasMany('App\CustomerQuery', 'id');
+        return $this->belongsTo('App\CustomerQuery', 'ticket_id');
     }
 }
