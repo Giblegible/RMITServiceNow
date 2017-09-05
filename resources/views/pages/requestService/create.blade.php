@@ -50,14 +50,14 @@
             <div class="form-group row">
                 <div class="col-md-12">
                     {!! Form::label('name', 'Name', array('class' => 'col-form-label')) !!}
-                    {!! Form::text('name', '', ['class' => 'form-control']) !!}
+                    {!! Form::text('name',  Auth::user()->name , ['class' => 'form-control', 'readonly' => 'true']) !!}
                 </div>
             </div>
 
             <div class="form-group row">
                 <div class="col-md-12">
                     {!! Form::label('email', 'Email', array('class' => 'col-form-label')) !!}
-                    {!! Form::text('email', '', ['class' => 'form-control']) !!}
+                    {!! Form::text('email', Auth::user()->email, ['class' => 'form-control', 'readonly' => 'true']) !!}
                 </div>
             </div>
         </div>
