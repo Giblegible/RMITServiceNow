@@ -38,7 +38,7 @@
 
                         <li id='reqServiceL' ><a href="{{ URL::to('pages/requestService/create') }}">Request Service</a></li>
 
-                        <li id='trackProgL' ><a href="{{ URL::to('trackProgress\credentialsCheck') }}">Track Progress</a></li>
+                        <li id='trackProgL' ><a href="{{ URL::to('pages/trackProgress/userQueries') }}">Track Progress</a></li>
 
                         <li id='adminL'><a href="{{ URL::to('pages/admin/auth') }}">ITS Staff</a></li>
 
