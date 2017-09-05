@@ -23,4 +23,3 @@ Route::resource('pages/admin/adminRequestService', 'AdminQueryController');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
