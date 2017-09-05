@@ -7,8 +7,7 @@ Route::get('home', 'PageController@home');
 
 //Track Progress
 //Post the email that the user wants to view current queries for.
-Route::post('pages/trackProgress/userQueries', ['uses' => 'CustomerQueryController@getUserQueries']);
-Route::get('trackProgress/credentialsCheck', ['middleware' => 'auth', 'uses' => 'PageController@trackprogress']);
+Route::get('pages/trackProgress/userQueries', ['uses' => 'CustomerQueryController@getUserQueries']);
 
 //Admin Page
 Route::get('pages/admin/auth', 'PageController@adminPage');
