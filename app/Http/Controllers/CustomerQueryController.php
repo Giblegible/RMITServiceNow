@@ -72,7 +72,7 @@ class CustomerQueryController extends Controller
         //Test DB to check if comments exist in case.
         $comments = Comment::all()->where('ticket_id', $ticket->id)->first();
 
-        Log::info('CUSTOMER - Show Case: '.Auth::user()->email);
+        Log::info('CUSTOMER - Show Case: '.$id.' for '.Auth::user()->email);
 
         if(is_null($comments))
         {
@@ -82,9 +82,6 @@ class CustomerQueryController extends Controller
         else{
             //A comment does exist for case, create query for all comments.
             $comments = Comment::all()->where('ticket_id', $ticket->id);
-            foreach($comments as $comment) {
-                Log::info($comment->customer_queries->customer->name);
-            }
         }
         return view('pages.requestService.show', compact('ticket', 'comments'));
     }
