@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\CustomerQuery;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,9 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('userQueries', 'CustomerQueryController@index');
+Route::get('userQueries/{id}', 'CustomerQueryController@show');
+Route::post('userQueries', 'CustomerQueryController@store');
+Route::put('userQueries/{id}', 'CustomerQueryController@update');
+Route::delete('userQueries/{id}', 'CustomerQueryController@destroy');
