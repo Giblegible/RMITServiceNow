@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 use App\Customer;
 use App\Comment;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CreateQueryRequest;
 use App\Http\Requests\UpdateQueryRequest;
 use App\Http\Requests\FilterRequest;
@@ -11,6 +11,12 @@ use App\CustomerQuery;
 
 class CustomerQueryController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $tickets = CustomerQuery::all();
@@ -65,8 +71,8 @@ class CustomerQueryController extends Controller
         $ticket = CustomerQuery::find($id);
         //Test DB to check if comments exist in case.
         $comments = Comment::all()->where('ticket_id', $ticket->id)->first();
-        $user = session('email');
-        Log::info('CUSTOMER - Show Case: '.$user);
+
+        Log::info('CUSTOMER - Show Case: '.$id.' for '.Auth::user()->email);
 
         if(is_null($comments))
         {
@@ -76,11 +82,8 @@ class CustomerQueryController extends Controller
         else{
             //A comment does exist for case, create query for all comments.
             $comments = Comment::all()->where('ticket_id', $ticket->id);
-            foreach($comments as $comment) {
-                Log::info($comment->customer_queries->customer->name);
-            }
         }
-        return view('pages.requestService.show', compact('ticket', 'comments', 'user'));
+        return view('pages.requestService.show', compact('ticket', 'comments'));
     }
 
     /**
@@ -142,22 +145,20 @@ class CustomerQueryController extends Controller
         return view('pages.requestService.destroy');
     }
 
-    public function getUserQueries(FilterRequest $request)
+    public function getUserQueries()
     {
-        $allRequest = $request->all();
+        $currentUser = Auth::user()->email;
 
-        Log::info('CUSTOMER - Attempt to view queries for email: '.$allRequest['emailText']);
-        $customer = Customer::all()->where('email', $allRequest['emailText'])->first();
+        Log::info('CUSTOMER - Attempt to view queries for email: '.$currentUser);
+        $customer = Customer::all()->where('email', $currentUser)->first();
         if(is_null($customer))
         {
             Log::info('CUSTOMER - Attempt Failed: No customer found.');
             return redirect()->back()->with('fail', 'This account has not submitted a query.');
         }
         $tickets = CustomerQuery::all()->where('customer_id', $customer->id);
-        Log::info('SESSION - Added customer variable to "user"');
         Log::info('CUSTOMER - Retrieving data for user');
-        $request->session()->put('email', $customer->email);
-        $request->session()->put('user', $tickets);
+
         return view('pages.trackProgress.userQueries', compact('tickets'));
     }
 }

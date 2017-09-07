@@ -1,8 +1,8 @@
-@extends('layout.master')
+@extends('layouts.master')
 @section('title', 'View Tickets')
 @section('content')
     <div class="container">
-        @if($user === $ticket->customer->email)
+        @if(Auth::user()->email === $ticket->customer->email)
             @include('includes.requestService.requestServiceShow')
             <div class="container">
             {!! Form::open(['action' => 'CustomerQueryController@getUserQueries']) !!}
