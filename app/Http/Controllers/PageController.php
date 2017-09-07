@@ -13,8 +13,4 @@ class PageController extends Controller
     public function adminPage() {
         return view('pages.admin.auth');
     }
-
-    public function trackprogress() {
-        return view('pages.trackProgress.credentialsCheck');
-    }
 }
