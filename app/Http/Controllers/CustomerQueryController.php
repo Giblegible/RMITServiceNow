@@ -70,7 +70,7 @@ class CustomerQueryController extends Controller
     public function show($id) {
         $ticket = CustomerQuery::find($id);
         //Test DB to check if comments exist in case.
-        $comments = Comment::all()->where('ticket_id', $ticket->id)->first();
+        $comments = Comment::all()->where('conversation_id', $id)->first();
 
         Log::info('CUSTOMER - Show Case: '.$id.' for '.Auth::user()->email);
 
@@ -81,7 +81,7 @@ class CustomerQueryController extends Controller
         }
         else{
             //A comment does exist for case, create query for all comments.
-            $comments = Comment::all()->where('ticket_id', $ticket->id);
+            $comments = Comment::all()->where('conversation_id', $id);
         }
         return view('pages.requestService.show', compact('ticket', 'comments'));
     }
@@ -95,7 +95,7 @@ class CustomerQueryController extends Controller
     public function edit($id)
     {
         $ticket = CustomerQuery::find($id);
-        $comments = Comment::all()->where('ticket_id', $ticket->id);
+        $comments = Comment::all()->where('conversation_id', $id);
         return view('pages.requestService.edit')->with('ticket', $ticket)->with('comments', $comments);
     }
     /**
@@ -126,7 +126,7 @@ class CustomerQueryController extends Controller
         if(!is_null($checkIfComment)) {
             $comments = new Comment();
             $comments->comment = $checkIfComment;
-            $comments->ticket_id = $id;
+            $comments->conversation_id = $id;
             $comments->save();
             Log::info('CUSTOMER -  Comment added for ID:'.$id);
         }

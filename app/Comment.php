@@ -11,6 +11,6 @@ class Comment extends Model
     ];
 
     public function customer_queries() {
-        return $this->belongsTo('App\CustomerQuery', 'ticket_id');
+        return $this->belongsTo('App\CustomerQuery', 'conversation_id');
     }
 }
