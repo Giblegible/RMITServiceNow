@@ -35,65 +35,26 @@ class AdminQueryController extends Controller
 
     public function show($id) {
         $ticket = CustomerQuery::find($id);
-        //Test DB to check if comments exist in case.
         $comments = Comment::all()->where('conversation_id', $id);
 
         return response()->json([$ticket, $comments], 200);
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        $ticket = CustomerQuery::find($id);
-        $comments = Comment::all()->where('ticket_id', $ticket->id);
-        return view('pages.admin.adminRequestService.edit')->with('ticket', $ticket)->with('comments', $comments);
-    }
-    /**
      * Update the specified resource in storage.
      *
      * @param  int  $id
-     * @return Response
+     * @return $ticket and $comments
      */
-    public function update($id, UpdateQueryRequest $request)
+    public function update(UpdateQueryRequest $request, $id)
     {
         $allRequest = $request->all();
 
-        $ticket = CustomerQuery::find($id);
-        $ticket->problemStatus = $allRequest['problemStatus'];
-        $ticket->problemSeverity = $allRequest['problemSeverity'];
-        $ticket->save();
+        $ticket = CustomerQuery::findOrFail($id);
+        $ticket->update($allRequest);
 
-        $checkIfResolved = $ticket->problemStatus;
-        if($checkIfResolved === "Resolved")
-        {
-            $comments = new Comment();
-            $comments->comment = "Hi ".$ticket->customer->name.", our team has marked your case as resolved. 
-                Please review the case and close if you feel we have resolved your query sufficiently.";
-            $comments->ticket_id = $id;
-            $comments->adminComment = 'RMITServiceNow';
-            $comments->save();
-            Log::info('ADMIN - Update Request Successful: Admin has closed case, ID: '.$ticket->id);
-        }
-        $checkIfComment = $allRequest['comments'];
-        /**
-         * Check if the comment has been input.
-         * If yes, add comment to DB and save.
-         * If no, disregard creating comment.
-         */
-        if(!is_null($checkIfComment)) {
-            $comments = new Comment();
-            $comments->comment = $checkIfComment;
-            $comments->ticket_id = $id;
-            $comments->adminComment = 'RMITServiceNow';
-            $comments->save();
-            Log::info('ADMIN - Update Request Successful: Admin has added comments to case, ID: '.$ticket->id);
-        }
-        Log::info('ADMIN - Update Request Successful: Admin has updated case, ID: '.$ticket->id);
-        return redirect()->back()->with('success','Case has been updated successfully');
+        $comments = Comment::all()->where('conversation_id', $id);
+
+        return response()->json([$ticket, $comments], 200);
     }
 }

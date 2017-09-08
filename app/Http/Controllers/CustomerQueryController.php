@@ -5,7 +5,6 @@ use App\Comment;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CreateQueryRequest;
 use App\Http\Requests\UpdateQueryRequest;
-use App\Http\Requests\FilterRequest;
 use Illuminate\Support\Facades\Log;
 use App\CustomerQuery;
 
