@@ -18,8 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('userQueries', 'CustomerQueryController@index');
-Route::get('userQueries/{id}', 'CustomerQueryController@show');
-Route::post('userQueries', 'CustomerQueryController@store');
-Route::put('userQueries/{id}', 'CustomerQueryController@update');
-Route::delete('userQueries/{id}', 'CustomerQueryController@destroy');
+Route::get('adminRequestService', 'AdminQueryController@index');
+Route::get('adminRequestService/{id}', 'AdminQueryController@show');
+Route::post('adminRequestService', 'AdminQueryController@store');
+Route::put('adminRequestService/{id}', 'AdminQueryController@update');
+Route::delete('adminRequestService/{id}', 'AdminQueryController@destroy');
