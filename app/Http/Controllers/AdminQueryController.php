@@ -15,10 +15,10 @@ class AdminQueryController extends Controller
 {
     public function index()
     {
-        $tickets = CustomerQuery::all();
-        return view('pages.admin.adminRequestService.index', compact('tickets'));
+        return CustomerQuery::all();
     }
 
+    //Need to implement correct 'Fail' search.
     public function filter(FilterRequest $request)
     {
         $allRequest = $request->all();
@@ -30,26 +30,15 @@ class AdminQueryController extends Controller
             $tickets = CustomerQuery::all();
             return redirect('pages/admin/adminRequestService/')->with('fail', 'User does not exist')->with('tickets', $tickets);
         }
-        $tickets = CustomerQuery::all()->where('customer_id', $customer->id);
-        Log::info('ADMIN - Search Request Successful: Returning '.$tickets->count().' cases!');
-        return view('pages/admin/adminRequestService/index')->with('tickets', $tickets);
+        return CustomerQuery::all()->where('customer_id', $customer->id);
     }
 
     public function show($id) {
         $ticket = CustomerQuery::find($id);
         //Test DB to check if comments exist in case.
-        $comments = Comment::all()->where('ticket_id', $ticket->id)->first();
+        $comments = Comment::all()->where('conversation_id', $id);
 
-        if(is_null($comments))
-        {
-            //Comments do not exist for case.
-            $comments = null;
-        }
-        else{
-            //A comment does exist for case, create query for all comments.
-            $comments = Comment::all()->where('ticket_id', $ticket->id);
-        }
-        return view('pages.admin.adminRequestService.show', compact('ticket', 'comments'));
+        return response()->json([$ticket, $comments], 200);
     }
 
     /**
