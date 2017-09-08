@@ -98,7 +98,7 @@
         <div class="form-group row">
             {!! Form::label('comments', 'Add Comment', array('class' => 'col-md-2 col-form-label')) !!}
             <div class="col-md-10">
-                {!! Form::textarea('comments',null,['class'=>'form-control']) !!}
+                {!! Form::textarea('comments','',['class'=>'form-control']) !!}
             </div>
         </div>
         <div class="form-group">
