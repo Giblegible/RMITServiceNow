@@ -8,7 +8,7 @@ class CustomerQuery extends Model
 {
     protected $fillable = [
         'serviceArea', 'workArea', 'problemDescription', 'problemStatus',
-        'problemSeverity', 'comments', 'hardwareType', 'softwareType',
+        'problemSeverity', 'hardwareType', 'softwareType',
     ];
 
     public function customer() {
@@ -16,6 +16,6 @@ class CustomerQuery extends Model
     }
 
     public function comments() {
-        return $this->hasMany('App\Comments');
+        return $this->hasMany('App\Comment', 'id');
     }
 }
