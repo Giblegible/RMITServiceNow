@@ -13,11 +13,6 @@ use App\CustomerQuery;
 
 class AdminQueryController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         $tickets = CustomerQuery::all();
