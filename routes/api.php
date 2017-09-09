@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Http\Request;
-use App\CustomerQuery;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +17,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+/*ADMIN - Request Service API Routes
+Index - Display ALL queries
+Show - Display single query
+Filter - Display ALL queries for specified user
+Update - Update query for specified case
+*/
 Route::get('adminRequestService', 'AdminQueryController@index');
 Route::get('adminRequestService/{id}', 'AdminQueryController@show');
-Route::post('adminRequestService', 'AdminQueryController@store');
+Route::get('adminRequestService/filter/{customer_id}', 'AdminQueryController@filter');
 Route::put('adminRequestService/{id}', 'AdminQueryController@update');
-Route::delete('adminRequestService/{id}', 'AdminQueryController@destroy');
+
+/*ADMIN - Comments Route
+Store - Add comment to specified case
+*/
+Route::post('comment', 'CommentController@store');
