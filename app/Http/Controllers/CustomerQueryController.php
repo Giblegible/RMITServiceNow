@@ -32,25 +32,6 @@ class CustomerQueryController extends Controller
     {
         $allRequest = $request->all();
 
-        //Check the email to find if user has already submitted query
-        $email = $allRequest['email'];
-        $customerExists = Customer::where('email', $email)->first();
-
-        $customer = null;
-
-        if(!$customerExists)
-        {
-            $customer = new Customer();
-            $customer->name = $allRequest['name'];
-            $customer->email = $email;
-            $customer->phoneNum = $allRequest['phoneNum'];
-            $customer->program = $allRequest['program'];
-            $customer->save();
-        }
-        else {
-            $customer = $customerExists;
-        }
-
         $query = new CustomerQuery();
         $query->serviceArea = $allRequest['serviceArea'];
         $query->workArea = $allRequest['workArea'];
@@ -59,7 +40,7 @@ class CustomerQueryController extends Controller
         $query->softwareType = $allRequest['softwareType'];
         $query->problemStatus = "Pending";
         $query->problemSeverity = "Not Specified";
-        $query->customer_id = $customer->id;
+        $query->customer_id = Auth::user()->id;
         $query->save();
 
         return redirect('pages/requestService/create')->with('success','Service requested
@@ -146,17 +127,9 @@ class CustomerQueryController extends Controller
 
     public function getUserQueries()
     {
-        $currentUser = Auth::user()->email;
-
-        Log::info('CUSTOMER - Attempt to view queries for email: '.$currentUser);
-        $customer = Customer::all()->where('email', $currentUser)->first();
-        if(is_null($customer))
-        {
-            Log::info('CUSTOMER - Attempt Failed: No customer found.');
-            return redirect()->back()->with('fail', 'This account has not submitted a query.');
-        }
-        $tickets = CustomerQuery::all()->where('customer_id', $customer->id);
-        Log::info('CUSTOMER - Retrieving data for user');
+        $user = Auth::user()->id;
+        $tickets = CustomerQuery::all()->where('customer_id', $user);
+        Log::info('CUSTOMER - Retrieving data for user ID: '.$user);
 
         return view('pages.trackProgress.userQueries', compact('tickets'));
     }
