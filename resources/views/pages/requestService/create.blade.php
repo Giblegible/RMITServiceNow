@@ -65,14 +65,14 @@
             <div class="form-group row">
                 <div class="col-md-12">
                     {!! Form::label('phoneNum', 'Phone Number', array('class' => 'col-form-label')) !!}
-                    {!! Form::text('phoneNum', '', ['class' => 'form-control']) !!}
+                    {!! Form::text('phoneNum', Auth::user()->phoneNum, ['class' => 'form-control', 'readonly' => 'true']) !!}
                 </div>
             </div>
 
             <div class="form-group row">
                 <div class="col-md-12">
                     {!! Form::label('program', 'Program Code', array('class' => 'col-form-label')) !!}
-                    {!! Form::text('program', '', ['class' => 'form-control']) !!}
+                    {!! Form::text('program', Auth::user()->program, ['class' => 'form-control', 'readonly' => 'true']) !!}
                 </div>
             </div>
         </div>
