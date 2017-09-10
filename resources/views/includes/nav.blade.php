@@ -40,8 +40,6 @@
 
                         <li id='trackProgL' ><a href="{{ URL::to('pages/trackProgress/userQueries') }}">Track Progress</a></li>
 
-                        <li id='adminL'><a href="{{ URL::to('pages/admin/auth') }}">ITS Staff</a></li>
-
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
