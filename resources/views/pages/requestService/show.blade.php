@@ -8,7 +8,7 @@
                 {!! Form::open(['action' => 'CustomerQueryController@getUserQueries']) !!}
                 <a href="{{ URL::asset('pages/requestService/'.$ticket->id.'/edit') }}" class="btn btn-success">Update</a>
                 {!! Form::text('emailText', $ticket->customer->email, ['class' => 'form-control hidden']) !!}
-                <button class="btn btn-success" type="submit">Back</button>
+                <a href="{{ URL::to('pages/trackProgress/userQueries') }}" class="btn btn-success">Back</a>
                 {!! Form::close() !!}
             </div>
         @else
