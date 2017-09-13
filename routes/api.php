@@ -23,12 +23,16 @@ Show - Display single query
 Filter - Display ALL queries for specified user
 Update - Update query for specified case
 */
-Route::get('adminRequestService', 'AdminQueryController@index');
-Route::get('adminRequestService/{id}', 'AdminQueryController@show');
-Route::get('adminRequestService/filter/{customer_id}', 'AdminQueryController@filter');
-Route::put('adminRequestService/{id}', 'AdminQueryController@update');
+Route::group(['middleware' => 'auth.basic'], function () {
 
-/*ADMIN - Comments Route
-Store - Add comment to specified case
-*/
-Route::post('comment', 'CommentController@store');
+    Route::get('adminRequestService', 'AdminQueryController@index');
+    Route::get('adminRequestService/{id}', 'AdminQueryController@show');
+    Route::get('adminRequestService/filter/{customer_id}', 'AdminQueryController@filter');
+    Route::put('adminRequestService/{id}', 'AdminQueryController@update');
+
+    /*ADMIN - Comments Route
+    Store - Add comment to specified case
+    */
+    Route::post('comment', 'CommentController@store');
+
+});
